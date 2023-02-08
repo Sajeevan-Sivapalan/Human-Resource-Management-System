@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import AdminReqLeave from "./AdminReqLeave";
+import AdminReqLeaveSearch from "./AdminReqLeaveSearch";
 
 function AdminContent() {
     return(
@@ -8,6 +9,7 @@ function AdminContent() {
             <Routes>
                 <Route>
                     <Route path="/AdminReqLeave" element={<AdminReqLeave />} />
+                    <Route path="/AdminReqLeave/Search" element={<AdminReqLeaveSearch />} />
                 </Route>
             </Routes>
         </div>

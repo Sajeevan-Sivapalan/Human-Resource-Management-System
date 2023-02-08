@@ -25,7 +25,7 @@ class AdminEmpLeaveList extends Component {
         const leaveObj = {
             status: "rejected"
         }
-        axios.put(`http://localhost:5000/AdminReqLeave//updateEmpLeave/${id}`, leaveObj).then(() => {
+        axios.put(`http://localhost:5000/AdminReqLeave/updateEmpLeave/${id}`, leaveObj).then(() => {
             window.location.replace("http://localhost:3000/AdminReqLeave");
         })
         .catch((err) => {

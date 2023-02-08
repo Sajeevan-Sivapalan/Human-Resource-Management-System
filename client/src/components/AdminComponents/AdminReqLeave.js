@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import AdminEmpLeaveList from "./AdminEmpLeaveList";
+import {Link} from "react-router-dom";
+import { Form, Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 
 class AdminReqLeave extends Component {
     constructor(props) {
@@ -21,7 +23,7 @@ class AdminReqLeave extends Component {
         })
     }
 
-    getData() {
+    getData = (event) => {
         return this.state.empLeaveData.map((res, index) => {
             return <AdminEmpLeaveList obj={res} key={index} />
         }
@@ -29,13 +31,21 @@ class AdminReqLeave extends Component {
 
     render() {
         return(
-            <div>
-                <div class="leave-list">
-                    <div class="row justify-content-center">
-                        {this.getData()}
+            <>
+                <div class="search">
+                    <div class="row justify-content-end">
+                        <Link to="/AdminReqLeave/Search"><button class="btn btn-outline-success" type="submit">Search</button></Link>
                     </div>
                 </div>
-            </div>
+                <div>
+                    <div class="leave-list">
+                        <div class="row justify-content-center">
+                            {this.getData()}
+                        </div>
+                    </div>
+                </div>
+            </>
+            
         );
     }
 }

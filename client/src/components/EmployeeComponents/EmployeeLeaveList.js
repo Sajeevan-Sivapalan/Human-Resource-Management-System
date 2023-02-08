@@ -24,12 +24,11 @@ class EmployeeLeaveList extends Component {
                             <h5 class="card-title">Employee ID : {this.props.obj.empID}</h5>
                             <h5 class="card-title">First Name : {this.props.obj.fName}</h5>
                             <p class="card-text">Reason : {this.props.obj.reason}</p>
-                            
+                            <button type="button" class="btn btn-status btn-outline-secondary col-2 ">
+                                {this.props.obj.status}
+                            </button>
                             <div class="request-leave">
                                 <div class="row justify-content-end">
-                                    <button type="button" class="btn btn-status btn-outline-secondary col-2 ">
-                                        {this.props.obj.status}
-                                    </button>
                                     <button type="button" class="btn btn-danger col-2 " onClick={() => this.deleteLeave(this.props.obj._id)}>
                                         Cancel
                                     </button>
