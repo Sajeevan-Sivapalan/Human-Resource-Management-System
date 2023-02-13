@@ -23,7 +23,7 @@ class AdminReqLeave extends Component {
         })
     }
 
-    getData = (event) => {
+    getData = () => {
         return this.state.empLeaveData.map((res, index) => {
             return <AdminEmpLeaveList obj={res} key={index} />
         }

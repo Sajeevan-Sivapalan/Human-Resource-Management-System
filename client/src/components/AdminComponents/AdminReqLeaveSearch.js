@@ -1,43 +1,64 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import axios from "axios";
 import { Form, Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import AdminEmpLeaveList from "./AdminEmpLeaveList";
 
 class AdminReqLeaveSearch extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            empID: ''
+            empLeaveData: []
         }
     }
 
-    onChangeEmpID = (event) => {
-        this.setState({empID:event.target.value});
-    }
-
-    searchReq = (event) => {
-        event.preventDefault();
-        //alert(this.state.empID);
-        axios.post(`http://localhost:5000/AdminReqLeave/Search/${this.state.empID}`).then(res => {
-            console.log(res.data);
-            window.location.replace("http://localhost:3000/AdminReqLeave");
+    componentDidMount() {
+        axios.get('http://localhost:5000/AdminReqLeave').then(res => {
+            this.setState({
+                empLeaveData: res.data
+            })
         })
         .catch((err) => {
             console.log(err);
         })
     }
 
+    filterContent(empLeaveData, searchItem) {
+        const result = empLeaveData.filter((empLeaveData) => empLeaveData.empID.includes(searchItem));
+        this.setState({empLeaveData:result});
+    }
+
+    searchData = (event) => {
+        
+        const searchItem = event.currentTarget.value;
+        //console.log(searchItem);
+        axios.post(`http://localhost:5000/AdminReqLeave`).then(res => {
+                this.filterContent(res.data.empLeaveData, searchItem);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    }
+
+    getData = () => {
+        return this.state.empLeaveData.map((res, index) => {
+            return <AdminEmpLeaveList obj={res} key={index} />
+        }
+    )}
+
     render() {
         return(
-            <div class="search">
-                <Form onSubmit={this.searchReq}>
-                    <div class="row justify-content-center">
-                        <div class="col-2">
-                            <Form.Control type="text" class="form-control col-3" value={this.state.empID} onChange={this.onChangeEmpID} placeholder="Search by empID"/>
+            <>
+                <div class="search">
+                    <input type="text" onChange={this.searchData } />
+                </div>
+                <div>
+                    <div class="leave-list">
+                        <div class="row justify-content-center">
+                            {this.getData()}
                         </div>
-                        <input type="submit" class="btn btn-primary col-1" value="Search" />
                     </div>
-                </Form>
-            </div>
+                </div>
+            </>
         );
     }
 }
