@@ -8,7 +8,7 @@ let LeaveRequestSchema = require("../model/EmployeeLeave");
 recordRoutes.route("/reqEmpLeave").post(function (req, res) {
   LeaveRequestSchema.create(req.body, (err, data) => {
     if (err)
-      console.log("Error in add req leave form" + err);
+      console.log("Error in add req leave form " + err);
     else{
       console.log(data);
       res.json(data);

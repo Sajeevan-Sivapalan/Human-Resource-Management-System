@@ -40,7 +40,7 @@ class AdminReqLeave extends Component {
         this.setState({empLeaveData:result});
     }
 
-    getData = () => {
+    getReqLeaveData = () => {
         return this.state.empLeaveData.map((res, index) => {
             return <AdminEmpLeaveList obj={res} key={index} />
         }
@@ -57,7 +57,7 @@ class AdminReqLeave extends Component {
                 <div>
                     <div class="leave-list">
                         <div class="row justify-content-center">
-                            {this.getData()}
+                            {this.getReqLeaveData()}
                         </div>
                     </div>
                 </div>

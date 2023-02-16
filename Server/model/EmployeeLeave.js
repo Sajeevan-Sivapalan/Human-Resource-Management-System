@@ -10,6 +10,10 @@ const LeaveRequestSchema = new Schema({
         type: String, 
         required: true
     },
+    leaveType: {
+        type: String, 
+        required: true
+    },
     sDate: {
         type: String, 
         required: true

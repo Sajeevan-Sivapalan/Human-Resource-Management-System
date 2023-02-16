@@ -24,7 +24,7 @@ class EmployeeReqLeave extends Component {
         })
     }
 
-    getData() {
+    getReqLeaveData() {
         return this.state.empLeaveData.map((res, index) => {
             return <EmployeeLeaveList obj={res} key={index} />
         }
@@ -36,7 +36,7 @@ class EmployeeReqLeave extends Component {
                 <EmployeeReqLeaveForm></EmployeeReqLeaveForm>
                 <div class="leave-list">
                     <div class="row justify-content-center">
-                        {this.getData()}
+                        {this.getReqLeaveData()}
                     </div>
                 </div>
             </>

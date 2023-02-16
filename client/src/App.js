@@ -3,8 +3,8 @@ import EmployeePanel from "./components/EmployeeComponents/EmployeePanel";
 
 function App() {
   return (
-    <AdminPanel></AdminPanel>
-    //<EmployeePanel></EmployeePanel>
+    //<AdminPanel></AdminPanel>
+    <EmployeePanel></EmployeePanel>
   );
 }
 

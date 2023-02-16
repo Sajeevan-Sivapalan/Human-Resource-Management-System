@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import { Form, Button, FormGroup, FormControl, DropdownButton, Dropdown } from "react-bootstrap";
 import axios from "axios";
 
 class EmployeeReqLeaveForm extends Component {
@@ -8,6 +8,7 @@ class EmployeeReqLeaveForm extends Component {
         this.state = {
             empID: '',
             fName: '',
+            leaveType:'',
             sDate: '',
             eDate: '',
             reason: '',
@@ -21,6 +22,10 @@ class EmployeeReqLeaveForm extends Component {
 
     onChangeFName = (event) => {
         this.setState({fName:event.target.value});
+    }
+
+    onChangeLeaveType = (event) => {
+        this.setState({leaveType:event.target.value});
     }
 
     onChangeSDate = (event) => {
@@ -40,6 +45,7 @@ class EmployeeReqLeaveForm extends Component {
         const leaveObj = {
             empID: this.state.empID,
             fName: this.state.fName,
+            leaveType: this.state.leaveType,
             sDate: this.state.sDate,
             eDate: this.state.eDate,
             reason: this.state.reason,
@@ -56,6 +62,7 @@ class EmployeeReqLeaveForm extends Component {
         this.state({
             empID: '',
             fName: '',
+            leaveType: '',
             sDate: '',
             eDate: '',
             reason: '',
@@ -92,6 +99,14 @@ class EmployeeReqLeaveForm extends Component {
                                     <Form.Control type="text" class="form-control" value={this.state.fName} onChange={this.onChangeFName} />
                                     <div class="form-feedback">
                                     </div>
+                                </div>
+                                <div class="form-ddb col-12">
+                                <label class="form-label">Leave Type</label>
+                                <Form.Select onChange={this.onChangeLeaveType}>
+                                    <option value="Casual Leave">Casual Leave</option>
+                                    <option value="Medical Leave">Medical Leave</option>
+                                    <option value="Marriage leave">Marriage leave</option>
+                                </Form.Select>
                                 </div>
                                 <div class="col-6">
                                     <label class="form-label">Starting Date</label>

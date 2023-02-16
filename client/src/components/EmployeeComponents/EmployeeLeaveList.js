@@ -23,6 +23,7 @@ class EmployeeLeaveList extends Component {
                         <div class="card-body">
                             <h5 class="card-title">Employee ID : {this.props.obj.empID}</h5>
                             <h5 class="card-title">First Name : {this.props.obj.fName}</h5>
+                            <h5 class="card-title">Leave Type : {this.props.obj.leaveType}</h5>
                             <p class="card-text">Reason : {this.props.obj.reason}</p>
                             <button type="button" class="btn btn-status btn-outline-secondary col-2 ">
                                 {this.props.obj.status}

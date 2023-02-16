@@ -42,6 +42,7 @@ class AdminEmpLeaveList extends Component {
                         <div class="card-body">
                             <h5 class="card-title">Employee ID : {this.props.obj.empID}</h5>
                             <h5 class="card-title">First Name : {this.props.obj.fName}</h5>
+                            <h5 class="card-title">Leave Type : {this.props.obj.leaveType}</h5>
                             <span class="card-text">Starting Date : {this.props.obj.sDate}</span><br />
                             <span class="card-text">Ending Date : {this.props.obj.eDate}</span><br />
                             <span class="card-text">Reason : {this.props.obj.reason}</span><br />
