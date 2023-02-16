@@ -23,6 +23,23 @@ class AdminReqLeave extends Component {
         })
     }
 
+    searchReqLeaveData = (event) => {
+        
+        const searchReqLeave = event.currentTarget.value;
+        //console.log(searchReqLeave);
+        axios.get(`http://localhost:5000/AdminReqLeave`).then(res => {
+                this.filterContent(res.data, searchReqLeave);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    }
+
+    filterContent(empLeaveData, searchReqLeave) {
+        const result = empLeaveData.filter((empLeaveData) => empLeaveData.empID.includes(searchReqLeave));
+        this.setState({empLeaveData:result});
+    }
+
     getData = () => {
         return this.state.empLeaveData.map((res, index) => {
             return <AdminEmpLeaveList obj={res} key={index} />
@@ -33,8 +50,8 @@ class AdminReqLeave extends Component {
         return(
             <>
                 <div class="search">
-                    <div class="row justify-content-end">
-                        <Link to="/AdminReqLeave/Search"><button class="btn btn-outline-success" type="submit">Search</button></Link>
+                    <div class="row justify-content-center">
+                        <input type="text" class="form-control search-bar" placeholder="Search By Employee ID"  onChange={this.searchReqLeaveData } />
                     </div>
                 </div>
                 <div>
