@@ -73,7 +73,7 @@ class EmployeeReqLeaveForm extends Component {
     render() {
         return(
             <>
-            <div class="request-leave">
+            <div class="request">
                 <div class="row justify-content-end">
                     <button type="button" class="btn btn-primary col-2 " data-bs-toggle="modal" data-bs-target="#ReqLeaveForm">
                         Request Leave
