@@ -17,7 +17,7 @@ class EmployeeReqLeaveForm extends Component {
     }
 
     onChangeEmpID = (event) => {
-        this.setState({name:event.target.value});
+        this.setState({empID:event.target.value});
     }
 
     onChangeFName = (event) => {

@@ -48,7 +48,10 @@
 }
 
 .btn-status{
-    width: 100px;
+    width: 250px;
+    margin-top: 10px;
+    text-transform: uppercase;
+    padding-top: 12px;
 }
 
 .btn-status:hover{

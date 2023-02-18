@@ -14,7 +14,7 @@ function CreateEmpQR() {
         var pngUrl = qrURL.toDataURL("image/png")
         .replace("image/png", "image/octet-stream");
         //alert(qrURL);
-        //console.log(qrURL)
+        console.log(qrURL)
         let aEl = document.createElement("a");
         aEl.href = pngUrl;
         aEl.download = `${empID}.png`;
