@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import AdminReqLeave from "./AdminReqLeave";
 import Attendance from "./Attendance";
-import ReadQR from "./ReadQR";
+import EntranceQR from "../QRComponents/EntranceQR";
 
 function AdminContent() {
     return(
@@ -11,7 +11,7 @@ function AdminContent() {
                 <Route>
                     <Route path="/AdminReqLeave" element={<AdminReqLeave />} />
                     <Route path="/Attendance" element={<Attendance />} />
-                    <Route path="/readQR" element={<ReadQR />} />
+                    <Route path="/readQR" element={<EntranceQR />} />
                 </Route>
             </Routes>
         </div>

@@ -37,3 +37,6 @@ app.use('/EmployeeReqLeave', employeeLeaveRequestData);
 
 const adminEmpLeaveRequestData = require("./routes/EmployeeLeaveReq");
 app.use('/AdminReqLeave', adminEmpLeaveRequestData);
+
+const employeeAttendanceData = require("./routes/EmployeeAttendance");
+app.use('/Attendance', employeeAttendanceData);

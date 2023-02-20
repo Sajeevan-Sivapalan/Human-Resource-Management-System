@@ -40,10 +40,10 @@ recordRoutes.route("/reqEmpLeave").post(function (req, res) {
 
  // delete a record.
  recordRoutes.route("/deleteEmpLeave/:id").delete(function (req, res)  {
-  let empID = req.params.id;
+  let objID = req.params.id;
 
-  LeaveRequestSchema.findByIdAndDelete(empID).then(() => {
-    res.json(empID);
+  LeaveRequestSchema.findByIdAndDelete(objID).then(() => {
+    res.json(objID);
   })
   .catch(() => {
     console.log("Error in delete leave form");
@@ -52,10 +52,10 @@ recordRoutes.route("/reqEmpLeave").post(function (req, res) {
 
  // update a record.
  recordRoutes.route("/updateEmpLeave/:id").put(function (req, res)  {
-  let empID = req.params.id;
+  let objID = req.params.id;
 
-  LeaveRequestSchema.findByIdAndUpdate(empID, req.body).then(() => {
-    res.json(empID);
+  LeaveRequestSchema.findByIdAndUpdate(objID, req.body).then(() => {
+    res.json(objID);
   })
   .catch((err) => {
     console.log("Error in update leave form" + err);
