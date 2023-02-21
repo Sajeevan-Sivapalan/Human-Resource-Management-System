@@ -15,26 +15,15 @@ class ExitQR extends Component {
           const currentDateTime = new Date();
           const date = `${currentDateTime.getFullYear()}-${currentDateTime.getMonth()+1}-${currentDateTime.getDate()}`;
           const time = currentDateTime.toLocaleTimeString("en-US");
-
+          alert("Enter" + data);
           const attendanceObj = {
             exitTime: time
           };
 
-          axios.get(`http://localhost:5000/Attendance/${data}/${date}`).then(res => {
-            alert("data");
-            console.log(res.data);
-            this.setState({
-              attendanceData: res.data
-            });
-            alert("1" + res._id);
-            alert("2" + res.data._id);
-            axios.put(`http://localhost:5000/Attendance//updateEmpLeave/${this.state._id}`, attendanceObj  ).then(() => {
-              alert("abnd");
-              window.location.replace("http://localhost:3000/exitQR");
-            })
-            .catch((err) => {
-                console.log(err);
-            })
+          axios.get(`http://localhost:5000/Attendance/${data}`).then(res => {
+                this.filterContent(res.data, date);
+                alert(this.props.empID);
+                alert(this.state.empID);
             //alert("THANK YOU " + data);
             //window.location.replace("http://localhost:3000/exitQR");
             //this.filterContent(res.data, date);
@@ -44,6 +33,11 @@ class ExitQR extends Component {
         })
         }
       };
+
+      filterContent(attendanceData, date) {
+        const result = attendanceData.filter((attendanceData) => attendanceData.empID.includes(date));
+        this.setState({attendanceData:result});
+    }
     
       onScanError = (err) => {
         console.error(err);
@@ -51,17 +45,19 @@ class ExitQR extends Component {
 
     render() {
           return (
-            <React.Fragment>
+            <>
+              <React.Fragment>
               <div class="QR-scanner-position">
                 <div class="QR-scanner">
                   <QrReader
-                    delay={500}
+                    delay={100}
                     onError={this.onScanError}
                     onScan={this.scanQR}
                   />
                 </div>
-              </div>
-            </React.Fragment>
+                </div>
+              </React.Fragment>
+            </>
           );
     }
 }

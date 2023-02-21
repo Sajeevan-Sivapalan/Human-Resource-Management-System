@@ -27,15 +27,14 @@ recordRoutes.route("/AttendanceEntry").post(function (req, res) {
   })
  });
 
- //search
- recordRoutes.route("/:empID/:date").get(function (req, res) {
+ //one  user record
+ recordRoutes.route("/:empID").get(function (req, res) {
   let empID = req.params.empID;
-  let date = req.params.date;
-  AttendanceSchema.find({"empID":`$empID`, "date":`$date`}).then(() => {
+  LeaveRequestSchema.find({"empID": `${empID}`}).then(() => {
       res.json(empID);
     })
-    .catch((err) => {
-      console.log("Error in search record" + err);
+    .catch(() => {
+      console.log("Error in search record");
     })
   });
 

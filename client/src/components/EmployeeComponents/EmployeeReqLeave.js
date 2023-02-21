@@ -8,20 +8,27 @@ class EmployeeReqLeave extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            empID: "emp111",
             empLeaveData: []
         }
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/EmployeeReqLeave').then(res => {
+        axios.get(`http://localhost:5000/EmployeeReqLeave`).then(res => {
             //console.table(res.data)
             this.setState({
                 empLeaveData: res.data
             })
+            this.filterContent(res.data, this.state.empID);
         })
         .catch((err) => {
             console.log(err);
         })
+    }
+
+    filterContent(empLeaveData, searchEmp) {
+        const result = empLeaveData.filter((empLeaveData) => empLeaveData.empID.includes(searchEmp));
+        this.setState({empLeaveData:result});
     }
 
     getReqLeaveData() {

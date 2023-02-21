@@ -27,8 +27,8 @@ recordRoutes.route("/reqEmpLeave").post(function (req, res) {
   })
  });
 
- //search
- recordRoutes.route("/Search/:empID").get(function (req, res) {
+ //one  user record
+ recordRoutes.route("/:empID").get(function (req, res) {
   let empID = req.params.empID;
   LeaveRequestSchema.find({"empID": `${empID}`}).then(() => {
       res.json(empID);
