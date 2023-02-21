@@ -13,22 +13,46 @@ class EntranceQR extends Component {
           const date = `${currentDateTime.getFullYear()}-${currentDateTime.getMonth()+1}-${currentDateTime.getDate()}`;
           const time = currentDateTime.toLocaleTimeString("en-US");
 
+          /*const attendanceObj = {
+            empID: data,
+            date: date,
+            enterTime: time
+          };*/
+
+          axios.get(`http://localhost:5000/Attendance`).then(res => {
+                this.filterContent(res.data, date, time, data);
+          })
+          .catch((err) => {
+              console.log(err);
+          })
+        }
+      };
+
+      filterContent(attendanceData, date, time, data) {
+        const result = attendanceData.filter((attendanceData) => attendanceData.empID.includes(data));
+        this.setState({attendanceData:result});
+        const result1 = attendanceData.filter((attendanceData) => attendanceData.date.includes(date));
+        this.setState({attendanceData:result1});
+
+        if(result1 == ""){
           const attendanceObj = {
             empID: data,
             date: date,
             enterTime: time
           };
-
           axios.post('http://localhost:5000/Attendance/AttendanceEntry', attendanceObj).then(res => {
-            console.log(res.data);
+            //console.log(res.data);
             alert("WELCOME " + data);
             window.location.replace("http://localhost:3000/readQR");
-        })
-        .catch((err) => {
-            console.log(err);
-        })
+            })
+            .catch((err) => {
+                console.log(err);
+            })
         }
-      };
+        else{
+          alert("Already your entry recorded successfully");
+        }
+      }
     
       onScanError = (err) => {
         console.error(err);

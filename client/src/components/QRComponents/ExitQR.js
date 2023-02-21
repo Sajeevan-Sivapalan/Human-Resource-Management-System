@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import QrReader from "modern-react-qr-reader";
 import axios from "axios";
+import Test from "./Test";
 
 class ExitQR extends Component {
     constructor(props) {
@@ -20,10 +21,11 @@ class ExitQR extends Component {
             exitTime: time
           };
 
-          axios.get(`http://localhost:5000/Attendance/${data}`).then(res => {
-                this.filterContent(res.data, date);
-                alert(this.props.empID);
-                alert(this.state.empID);
+          axios.get(`http://localhost:5000/Attendance`).then(res => {
+            alert("enter get");
+            this.filterContent(res.data, date, data);
+            //alert(this.props.empID);
+            //alert(this.state.empID);
             //alert("THANK YOU " + data);
             //window.location.replace("http://localhost:3000/exitQR");
             //this.filterContent(res.data, date);
@@ -34,29 +36,41 @@ class ExitQR extends Component {
         }
       };
 
-      filterContent(attendanceData, date) {
-        const result = attendanceData.filter((attendanceData) => attendanceData.empID.includes(date));
+      filterContent(attendanceData, date, data) {
+        const result = attendanceData.filter((attendanceData) => attendanceData.empID.includes(data));
         this.setState({attendanceData:result});
-    }
+        const result1 = attendanceData.filter((attendanceData) => attendanceData.date.includes(date));
+        this.setState({attendanceData:result1});
+        
+      }
     
       onScanError = (err) => {
         console.error(err);
       };
 
+      getAttendanceData = () => {
+        return this.state.attendanceData.map((res, index) => {
+            return <Test obj={res} key={index} />
+        }
+      )}
+
     render() {
           return (
             <>
               <React.Fragment>
-              <div class="QR-scanner-position">
-                <div class="QR-scanner">
-                  <QrReader
-                    delay={100}
-                    onError={this.onScanError}
-                    onScan={this.scanQR}
-                  />
-                </div>
+                <div class="QR-scanner-position">
+                  <div class="QR-scanner">
+                    <QrReader
+                      delay={500}
+                      onError={this.onScanError}
+                      onScan={this.scanQR}
+                    />
+                  </div>
                 </div>
               </React.Fragment>
+              <div>
+                {this.getAttendanceData()}
+              </div>
             </>
           );
     }
