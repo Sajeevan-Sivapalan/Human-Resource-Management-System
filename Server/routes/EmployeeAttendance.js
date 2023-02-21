@@ -8,7 +8,7 @@ let AttendanceSchema = require("../model/EmployeeAttendance");
 recordRoutes.route("/AttendanceEntry").post(function (req, res) {
   AttendanceSchema.create(req.body, (err, data) => {
     if (err)
-      console.log("Error in add req leave form " + err);
+      console.log("Error in add attendance entry " + err);
     else{
       console.log(data);
       res.json(data);
@@ -20,7 +20,7 @@ recordRoutes.route("/AttendanceEntry").post(function (req, res) {
  recordRoutes.route("/").get(function (req, res) {
   AttendanceSchema.find((err, data) => {
     if(err)
-      console.log("Error in add req leave form" + err);
+      console.log("Error in retrive data" + err);
     else{
       res.json(data);
     }
@@ -28,13 +28,14 @@ recordRoutes.route("/AttendanceEntry").post(function (req, res) {
  });
 
  //search
- recordRoutes.route("/Search/:empID").get(function (req, res) {
+ recordRoutes.route("/:empID/:date").get(function (req, res) {
   let empID = req.params.empID;
-  AttendanceSchema.find({"empID": `${empID}`}).then(() => {
+  let date = req.params.date;
+  AttendanceSchema.find({"empID":`$empID`, "date":`$date`}).then(() => {
       res.json(empID);
     })
-    .catch(() => {
-      console.log("Error in search record");
+    .catch((err) => {
+      console.log("Error in search record" + err);
     })
   });
 
@@ -52,10 +53,10 @@ recordRoutes.route("/AttendanceEntry").post(function (req, res) {
 
  // update a record.
  recordRoutes.route("/updateEmpLeave/:id").put(function (req, res)  {
-  let empID = req.params.id;
+  let objID = req.params.id;
 
-  AttendanceSchema.findByIdAndUpdate(empID, req.body).then(() => {
-    res.json(empID);
+  AttendanceSchema.findByIdAndUpdate(objID, req.body).then(() => {
+    res.json(objID);
   })
   .catch((err) => {
     console.log("Error in update leave form" + err);

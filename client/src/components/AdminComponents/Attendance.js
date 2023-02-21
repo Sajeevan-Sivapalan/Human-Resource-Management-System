@@ -58,14 +58,16 @@ class Attendance extends Component {
                 <div>
                     <div class="attendance-list">
                         <div class="row justify-content-center">
-                            <table class="table table-striped">
-                                <tr>
-                                    <th scope="col">Employee ID</th>
-                                    <th scope="col">Date</th>
-                                    <th scope="col">Entry Time</th>
-                                    <th scope="col">Exit Time</th>
-                                </tr>
-                                {this.getAttendanceData()}
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Employee ID</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Entry Time</th>
+                                        <th scope="col">Exit Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody>{this.getAttendanceData()}</tbody>
                             </table>
                         </div>
                     </div>
