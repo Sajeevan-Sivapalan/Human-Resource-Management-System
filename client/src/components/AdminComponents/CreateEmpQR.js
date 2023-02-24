@@ -1,6 +1,5 @@
 import React, { Component, useState } from "react";
-import QRCode from "react-qr-code";
-
+import QRCode from 'qrcode.react';
 
 function CreateEmpQR() {
     const [empID, setEmpID] = useState("");
@@ -13,14 +12,13 @@ function CreateEmpQR() {
         var qrURL = document.getElementById('QRcodeImg');
         var pngUrl = qrURL.toDataURL("image/png")
         .replace("image/png", "image/octet-stream");
-        //alert(qrURL);
         console.log(qrURL)
-        let aEl = document.createElement("a");
-        aEl.href = pngUrl;
-        aEl.download = `${empID}.png`;
-        document.body.appendChild(aEl);
-        aEl.click();
-        document.body.removeChild(aEl);
+        let dL = document.createElement("a");
+        dL.href = pngUrl;
+        dL.download = `${empID}.png`;
+        document.body.appendChild(dL);
+        dL.click();
+        document.body.removeChild(dL);
     }
     return(
         <>
@@ -40,7 +38,7 @@ function CreateEmpQR() {
                     </div>
                     <div class="modal-body">
                         <div class="row ">
-                            <QRCode id="QRcodeImg" value={empID} />
+                            <QRCode id="QRcodeImg" value={empID} level={"H"} includeMargin={true} />
                             <div>
                                 <input type="text" class="form-control" value={empID} onChange={(event) =>{generateEmployeeQR(event)}} placeholder="Enter Employee ID" />
                             </div>
