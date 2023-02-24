@@ -45,8 +45,8 @@ recordRoutes.route("/AttendanceEntry").post(function (req, res) {
   AttendanceSchema.findByIdAndDelete(empID).then(() => {
     res.json(empID);
   })
-  .catch(() => {
-    console.log("Error in delete leave form");
+  .catch((err) => {
+    console.log("Error in delete leave form" + err);
   })
  });
 
