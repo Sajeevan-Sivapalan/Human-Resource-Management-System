@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import QrReader from "modern-react-qr-reader";
 import axios from "axios";
-import Test from "./Test";
+import ExitQRUpd from "./ExitQRUpd";
 
 class ExitQR extends Component {
     constructor(props) {
@@ -15,24 +15,15 @@ class ExitQR extends Component {
         if (data) {
           const currentDateTime = new Date();
           const date = `${currentDateTime.getFullYear()}-${currentDateTime.getMonth()+1}-${currentDateTime.getDate()}`;
-          const time = currentDateTime.toLocaleTimeString("en-US");
-          alert("Enter" + data);
-          const attendanceObj = {
-            exitTime: time
-          };
+          alert("Thank you " + data);
+          
 
           axios.get(`http://localhost:5000/Attendance`).then(res => {
-            alert("enter get");
             this.filterContent(res.data, date, data);
-            //alert(this.props.empID);
-            //alert(this.state.empID);
-            //alert("THANK YOU " + data);
-            //window.location.replace("http://localhost:3000/exitQR");
-            //this.filterContent(res.data, date);
-        })
-        .catch((err) => {
-            console.log(err);
-        })
+          })
+          .catch((err) => {
+              console.log(err);
+          })
         }
       };
 
@@ -41,7 +32,6 @@ class ExitQR extends Component {
         this.setState({attendanceData:result});
         const result1 = attendanceData.filter((attendanceData) => attendanceData.date.includes(date));
         this.setState({attendanceData:result1});
-        
       }
     
       onScanError = (err) => {
@@ -50,7 +40,7 @@ class ExitQR extends Component {
 
       getAttendanceData = () => {
         return this.state.attendanceData.map((res, index) => {
-            return <Test obj={res} key={index} />
+            return <ExitQRUpd obj={res} key={index} />
         }
       )}
 

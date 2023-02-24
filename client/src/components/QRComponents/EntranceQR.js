@@ -38,10 +38,10 @@ class EntranceQR extends Component {
           const attendanceObj = {
             empID: data,
             date: date,
-            enterTime: time
+            enterTime: time,
+            exitTime: ""
           };
           axios.post('http://localhost:5000/Attendance/AttendanceEntry', attendanceObj).then(res => {
-            //console.log(res.data);
             alert("WELCOME " + data);
             window.location.replace("http://localhost:3000/readQR");
             })
@@ -51,6 +51,7 @@ class EntranceQR extends Component {
         }
         else{
           alert("Already your entry recorded successfully");
+          window.location.replace("http://localhost:3000/readQR");
         }
       }
     

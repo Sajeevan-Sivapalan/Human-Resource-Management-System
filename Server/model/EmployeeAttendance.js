@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 const AttendanceSchema = new Schema({
     empID: {
         type: String, 
-        //required: true
+        required: true
     },
     date: {
         type: String, 

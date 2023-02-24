@@ -39,7 +39,7 @@ recordRoutes.route("/AttendanceEntry").post(function (req, res) {
   });
 
  // delete a record.
- recordRoutes.route("/deleteEmpLeave/:id").delete(function (req, res)  {
+ recordRoutes.route("/deleteAttendance/:id").delete(function (req, res)  {
   let empID = req.params.id;
 
   AttendanceSchema.findByIdAndDelete(empID).then(() => {
@@ -51,7 +51,7 @@ recordRoutes.route("/AttendanceEntry").post(function (req, res) {
  });
 
  // update a record.
- recordRoutes.route("/updateEmpLeave/:id").put(function (req, res)  {
+ recordRoutes.route("/updateAttendance/:id").put(function (req, res)  {
   let objID = req.params.id;
 
   AttendanceSchema.findByIdAndUpdate(objID, req.body).then(() => {

@@ -22,8 +22,6 @@ app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
 
-
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
