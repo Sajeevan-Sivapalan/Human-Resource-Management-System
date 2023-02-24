@@ -81,29 +81,26 @@ class EmployeeReqLeaveForm extends Component {
         const endingDay = new Date(this.state.eDate);
         
         var dayDifferent = Math.ceil((endingDay.getTime() - startDay.getTime()) / (1000 * 3600 * 24));
-
+        var errorMessage1 = document.getElementById("errMsgDate");
         if(dayDifferent < 0) {
-            var errorMessage = document.getElementById("errMsgDate");
-            errorMessage.innerHTML = "Invalid date formate";
+            
+            errorMessage1.innerHTML = "Invalid date formate";
             this.setState({errorDate: false});
             
             var errorMessage = document.getElementById("errMsgReason");
-            var subButton = document.getElementById("LRFsubmit");
             if(this.state.reason.length <= 3){
                 errorMessage.innerHTML = "Minimum length must be 3";
                 this.setState({errorReason: false});
             }
             else {
                 errorMessage.innerHTML = "";
-                if(this.state.errorEmpID == true && this.state.errorFName == true && this.state.errorLeaveType == true)
-                    subButton.disabled = false;
-                else
-                    subButton.disabled = true;
+                this.setState({errorReason: true});
             }
         }
         else {
             this.setState({errorDate: true});
-
+            errorMessage1.innerHTML = "";
+            
             var errorMessage = document.getElementById("errMsgReason");
             if(this.state.reason.length <= 3){
                 errorMessage.innerHTML = "Minimum length must be 3";
@@ -118,9 +115,9 @@ class EmployeeReqLeaveForm extends Component {
 
     chcCheck = (event) => {
         var chcBtn = document.getElementById("chcBox");
+        var subButton = document.getElementById("LRFsubmit");
 
         if(chcBtn.checked == true) {
-            var subButton = document.getElementById("LRFsubmit");
             var errorMessage = document.getElementById("errChcBox");
             if(this.state.errorEmpID == true && this.state.errorFName == true && this.state.errorLeaveType == true && this.state.errorDate == true && this.state.errorReason == true){
                 subButton.disabled = false;
@@ -132,6 +129,8 @@ class EmployeeReqLeaveForm extends Component {
                 chcBtn.checked = false;
             }
         }
+        else
+            subButton.disabled = false;
     }
 
     reqLeave = (event) => {
