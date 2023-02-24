@@ -58,7 +58,7 @@ class EmployeeLeaveList extends Component {
                         </div>
                         <div class="card-footer">
                             <div class="row justify-content-end">
-                                <button type="button" class="btn btn-primary col-2 " onClick={() => this.updateReqLeave(this.props.obj._id)}>
+                                <button type="button" class="btn btn-primary col-2 " disabled={this.props.obj.status != "pending"} onClick={() => this.updateReqLeave(this.props.obj._id)}>
                                     Update
                                 </button>
                                 <button type="button" class="btn btn-danger col-2 " onClick={() => this.deleteLeave(this.props.obj._id)}>
