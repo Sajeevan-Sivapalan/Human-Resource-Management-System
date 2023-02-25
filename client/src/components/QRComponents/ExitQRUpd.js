@@ -23,7 +23,6 @@ class ExitQRUpd extends Component {
             };
 
             axios.put(`http://localhost:5000/Attendance/updateAttendance/${id}`, attendanceObj).then(() => {
-                alert("success");
                 window.location.replace("http://localhost:3000/exitQR");
             })
             .catch((err) => {

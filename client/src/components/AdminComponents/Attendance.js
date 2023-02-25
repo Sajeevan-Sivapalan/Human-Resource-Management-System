@@ -3,6 +3,7 @@ import QRCode from "react-qr-code";
 import CreateEmpQR from "./CreateEmpQR";
 import axios from "axios";
 import AttendanceList from "./AttendanceList";
+import GenerateAttendanceReport from "./GenerateAttendanceReport";
 
 
 class Attendance extends Component {
@@ -25,7 +26,6 @@ class Attendance extends Component {
     }
 
     searchEmployeeAttendanceData = (event) => {
-        
         const searchEmp = event.currentTarget.value;
         axios.get(`http://localhost:5000/Attendance`).then(res => {
                 this.filterContent(res.data, searchEmp);
@@ -49,7 +49,12 @@ class Attendance extends Component {
     render() {
         return(
             <>
-                <CreateEmpQR></CreateEmpQR>
+                <div class="request">
+                    <div class="row justify-content-end">
+                        <GenerateAttendanceReport></GenerateAttendanceReport>
+                        <CreateEmpQR></CreateEmpQR>
+                    </div>
+                </div>
                 <div class="search">
                     <div class="row justify-content-center">
                         <input type="text" class="form-control search-bar" placeholder="Search By Employee ID" onChange={this.searchEmployeeAttendanceData} />

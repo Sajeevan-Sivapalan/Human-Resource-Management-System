@@ -12,7 +12,6 @@ function CreateEmpQR() {
         var qrURL = document.getElementById('QRcodeImg');
         var pngUrl = qrURL.toDataURL("image/png")
         .replace("image/png", "image/octet-stream");
-        console.log(qrURL)
         let dL = document.createElement("a");
         dL.href = pngUrl;
         dL.download = `${empID}.png`;
@@ -22,18 +21,15 @@ function CreateEmpQR() {
     }
     return(
         <>
-            <div class="request">
-                <div class="row justify-content-end">
-                    <button type="button" class="btn btn-primary col-2 " data-bs-toggle="modal" data-bs-target="#ReqLeaveForm">
-                        Create QR for Employee
-                    </button>
-                </div>
-            </div>
+            
+            <button type="button" class="btn btn-primary col-2 " data-bs-toggle="modal" data-bs-target="#ReqLeaveForm">
+                Create QR for Employee
+            </button>
             <div class="modal fade" id="ReqLeaveForm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="ReqLeaveFormLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Generate QR Code for Employee</h5>
+                        <h5 class="modal-title" id="staticBackdropLabel">Generate QR Code For Employee</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
