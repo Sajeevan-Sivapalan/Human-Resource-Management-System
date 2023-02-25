@@ -61,17 +61,10 @@ class GenerateAttendanceReport extends Component {
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <div class="row">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <label class="form-label">Employee ID</label>
-                                            <input type="text" class="form-control" onChange={this.searchEmployeeAttendanceData} />
-                                            <div class="form-feedback">
-                                                <span id="errMsgEmpID"></span>
-                                            </div>
-                                        </div>
+                            <div class="row justify-content-center">
+                                    <div class="col-6">
+                                        <input type="text" class="form-control" placeholder="Search By Employee ID" onChange={this.searchEmployeeAttendanceData} />
                                     </div>
-                                <div class="row">
                                     <div class="row justify-content-center">
                                         <table class="table table-striped table-hover" id="employeeAttendance">
                                             <thead>
@@ -85,7 +78,6 @@ class GenerateAttendanceReport extends Component {
                                             <tbody>{this.getAttendanceData()}</tbody>
                                         </table>
                                     </div>
-                                </div>
                             </div>
                         </div>
                         <div class="modal-footer">
