@@ -33,8 +33,14 @@ app.use(express.json());
 const employeeLeaveRequestData = require("./routes/EmployeeLeaveReq");
 app.use('/EmployeeReqLeave', employeeLeaveRequestData);
 
+//http://localhost:3000/AdminReqLeave
 const adminEmpLeaveRequestData = require("./routes/EmployeeLeaveReq");
 app.use('/AdminReqLeave', adminEmpLeaveRequestData);
 
+//http://localhost:3000/Attendance
 const employeeAttendanceData = require("./routes/EmployeeAttendance");
 app.use('/Attendance', employeeAttendanceData);
+
+//http://localhost:3000/SuspiciousEmpLeave
+const suspiciousEmpLeaveData = require("./routes/SuspiciousEmpLeave");
+app.use('/SuspiciousEmpLeave', suspiciousEmpLeaveData);

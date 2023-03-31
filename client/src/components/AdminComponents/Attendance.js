@@ -4,6 +4,7 @@ import CreateEmpQR from "./CreateEmpQR";
 import axios from "axios";
 import AttendanceList from "./AttendanceList";
 import GenerateAttendanceReport from "./GenerateAttendanceReport";
+import ViewSuspiciousLeaveRecord from "./ViewSuspiciousLeaveRecord";
 
 
 class Attendance extends Component {
@@ -53,6 +54,7 @@ class Attendance extends Component {
                     <div class="row justify-content-end">
                         <GenerateAttendanceReport></GenerateAttendanceReport>
                         <CreateEmpQR></CreateEmpQR>
+                        <ViewSuspiciousLeaveRecord></ViewSuspiciousLeaveRecord>
                     </div>
                 </div>
                 <div class="search">
