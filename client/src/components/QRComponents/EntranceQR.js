@@ -39,7 +39,8 @@ class EntranceQR extends Component {
             empID: data,
             date: date,
             enterTime: time,
-            exitTime: ""
+            exitTime: "",
+            timeDifference: ""
           };
           axios.post('http://localhost:5000/Attendance/AttendanceEntry', attendanceObj).then(res => {
             alert("WELCOME " + data);

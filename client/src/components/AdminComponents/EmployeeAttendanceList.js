@@ -13,6 +13,7 @@ class EmployeeAttendanceList extends Component {
                     <td>{this.props.obj.date}</td>
                     <td>{this.props.obj.enterTime}</td>
                     <td>{this.props.obj.exitTime}</td>
+                    <td>{this.props.obj.timeDifference}</td>
                 </tr>
             </>
         );

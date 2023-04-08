@@ -7,7 +7,7 @@ function EmployeeSideBar() {
             <Link class="nav-link" to="">Home</Link>
             <Link class="nav-link" to="">Profile</Link>
             <Link class="nav-link" to="">Messages</Link>
-            <Link class="nav-link" to="/EmployeeReqLeave">Request Leave</Link>
+            <Link class="nav-link" to="/emp/EmployeeReqLeave">Request Leave</Link>
         </div>
     );
 }

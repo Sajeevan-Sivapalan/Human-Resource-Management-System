@@ -17,6 +17,10 @@ const AttendanceSchema = new Schema({
     exitTime: {
         type: String, 
         //required: true
+    },
+    timeDifference: {
+        type: String, 
+        //required: true
     }
 }, {
     collection: 'employeeAttendance'

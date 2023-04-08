@@ -14,7 +14,8 @@ class AttendanceList extends Component {
                 empID: this.props.obj.empID,
                 date: this.props.obj.date,
                 enterTime: this.props.obj.enterTime,
-                exitTime: this.props.obj.exitTime
+                exitTime: this.props.obj.exitTime,
+                timeDifference: this.props.obj.timeDifference
               };
               axios.post('http://localhost:5000/SuspiciousEmpLeave/addSuspiciousLeaveRecord', suspiciousAttendanceObj).then(res => {
                 //window.location.replace("http://localhost:3000/readQR");
@@ -24,7 +25,7 @@ class AttendanceList extends Component {
                 })
 
             axios.delete(`http://localhost:5000/Attendance/deleteAttendance/${id}`).then(() => {
-                window.location.replace("http://localhost:3000/Attendance");
+                window.location.replace("http://localhost:3000/admin/Attendance");
             })
         }
     }
@@ -37,6 +38,7 @@ class AttendanceList extends Component {
                     <td>{this.props.obj.date}</td>
                     <td>{this.props.obj.enterTime}</td>
                     <td>{this.props.obj.exitTime}</td>
+                    <td>{this.props.obj.timeDifference}</td>
                     <td><button class="btn btn-danger" onClick={() => this.deleteAttendanceRecord(this.props.obj._id)}>Suspicious</button></td>
                 </tr>
             </>

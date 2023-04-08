@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Outlet, Route, Routes } from "react-router-dom";
 import AdminReqLeave from "./AdminReqLeave";
 import Attendance from "./Attendance";
 import EntranceQR from "../QRComponents/EntranceQR";
@@ -10,10 +10,8 @@ function AdminContent() {
         <div class="content">
             <Routes>
                 <Route>
-                    <Route path="/exitQR" element={<ExitQR />} />
                     <Route path="/AdminReqLeave" element={<AdminReqLeave />} />
                     <Route path="/Attendance" element={<Attendance />} />
-                    <Route path="/readQR" element={<EntranceQR />} />
                 </Route>
             </Routes>
         </div>

@@ -3,7 +3,7 @@ import NavBar from "../AdminComponents/NavBar";
 import EmployeeSideBar from "./EmployeeSideBar";
 import EmployeeContent from "./EmployeeContent";
 
-function AdminPanel() {
+function EmployeePanel() {
     return(
         <>
             <NavBar></NavBar>
@@ -13,4 +13,4 @@ function AdminPanel() {
     );
 }
 
-export default AdminPanel;
+export default EmployeePanel;

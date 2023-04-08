@@ -73,6 +73,7 @@ class ViewSuspiciousLeaveRecord extends Component {
                                                     <th scope="col">Date</th>
                                                     <th scope="col">Entry Time</th>
                                                     <th scope="col">Exit Time</th>
+                                                    <th scope="col">Duration</th>
                                                 </tr>
                                             </thead>
                                             <tbody>{this.getSuspiciousAttendanceData()}</tbody>

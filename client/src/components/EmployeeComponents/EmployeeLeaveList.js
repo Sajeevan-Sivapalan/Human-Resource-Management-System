@@ -20,7 +20,7 @@ class EmployeeLeaveList extends Component {
 
         if(result == true) {
             axios.delete(`http://localhost:5000/EmployeeReqLeave/deleteEmpLeave/${id}`).then(() => {
-                window.location.replace("http://localhost:3000/EmployeeReqLeave");
+                window.location.replace("http://localhost:3000/emp/EmployeeReqLeave");
             })
         }
     }
@@ -30,7 +30,7 @@ class EmployeeLeaveList extends Component {
             reason: this.state.reason
         }
         axios.put(`http://localhost:5000/AdminReqLeave/updateEmpLeave/${id}`, leaveObj).then(() => {
-            window.location.replace("http://localhost:3000/EmployeeReqLeave");
+            window.location.replace("http://localhost:3000/emp/EmployeeReqLeave");
         })
         .catch((err) => {
             console.log(err);

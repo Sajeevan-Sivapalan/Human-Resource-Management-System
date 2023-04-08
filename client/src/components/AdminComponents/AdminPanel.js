@@ -8,7 +8,7 @@ function AdminPanel() {
         <>
             <NavBar></NavBar>
             <AdminSideBar></AdminSideBar>
-            <AdminContent></AdminContent>            
+            <AdminContent></AdminContent>  
         </>
     );
 }

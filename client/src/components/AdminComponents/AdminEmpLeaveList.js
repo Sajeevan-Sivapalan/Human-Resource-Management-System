@@ -14,7 +14,7 @@ class AdminEmpLeaveList extends Component {
             status: "accepted"
         }
         axios.put(`http://localhost:5000/AdminReqLeave//updateEmpLeave/${id}`, leaveObj).then(() => {
-            window.location.replace("http://localhost:3000/AdminReqLeave");
+            window.location.replace("http://localhost:3000/admin/AdminReqLeave");
         })
         .catch((err) => {
             console.log(err);
@@ -26,7 +26,7 @@ class AdminEmpLeaveList extends Component {
             status: "rejected"
         }
         axios.put(`http://localhost:5000/AdminReqLeave/updateEmpLeave/${id}`, leaveObj).then(() => {
-            window.location.replace("http://localhost:3000/AdminReqLeave");
+            window.location.replace("http://localhost:3000/admin/AdminReqLeave");
         })
         .catch((err) => {
             console.log(err);
