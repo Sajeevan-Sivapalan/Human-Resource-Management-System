@@ -7,7 +7,7 @@ class AttendanceList extends Component {
     }
 
     deleteAttendanceRecord = (id) => {
-        var result = window.confirm('Do you want to remove this record ?');
+        var result = window.confirm('Do you want to add to suspicious this record?');
 
         if(result == true) {
             const suspiciousAttendanceObj = {
@@ -17,13 +17,16 @@ class AttendanceList extends Component {
                 exitTime: this.props.obj.exitTime,
                 timeDifference: this.props.obj.timeDifference
               };
+
+              // add leave record to suspicious 
               axios.post('http://localhost:5000/SuspiciousEmpLeave/addSuspiciousLeaveRecord', suspiciousAttendanceObj).then(res => {
-                //window.location.replace("http://localhost:3000/readQR");
+
                 })
                 .catch((err) => {
                     console.log(err);
                 })
 
+            // delete leave record  
             axios.delete(`http://localhost:5000/Attendance/deleteAttendance/${id}`).then(() => {
                 window.location.replace("http://localhost:3000/admin/Attendance");
             })

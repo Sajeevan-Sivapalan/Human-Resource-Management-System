@@ -1,9 +1,7 @@
 import React from "react";
-import { Outlet, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import AdminReqLeave from "./AdminReqLeave";
 import Attendance from "./Attendance";
-import EntranceQR from "../QRComponents/EntranceQR";
-import ExitQR from "../QRComponents/ExitQR";
 
 function AdminContent() {
     return(

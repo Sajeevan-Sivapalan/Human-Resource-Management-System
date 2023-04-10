@@ -9,10 +9,13 @@ class AdminEmpLeaveList extends Component {
         };
     }
 
+    // update employee leave record
     acceptLeave = (id) => {
         const leaveObj = {
             status: "accepted"
         }
+        
+        // update employee leave record (accept)
         axios.put(`http://localhost:5000/AdminReqLeave//updateEmpLeave/${id}`, leaveObj).then(() => {
             window.location.replace("http://localhost:3000/admin/AdminReqLeave");
         })
@@ -21,10 +24,13 @@ class AdminEmpLeaveList extends Component {
         })
     }
 
+    // update employee leave record
     rejectLeave = (id) => {
         const leaveObj = {
             status: "rejected"
         }
+
+        // update employee leave record (reject)
         axios.put(`http://localhost:5000/AdminReqLeave/updateEmpLeave/${id}`, leaveObj).then(() => {
             window.location.replace("http://localhost:3000/admin/AdminReqLeave");
         })

@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { Component } from "react";
-import { Form, Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import EmployeeReqLeaveForm from "./EmployeeReqLeaveForm";
 import EmployeeLeaveList from "./EmployeeLeaveList";
 
@@ -14,8 +13,8 @@ class EmployeeReqLeave extends Component {
     }
 
     componentDidMount() {
+        // get all Employee request leave record and sending to filterContent method
         axios.get(`http://localhost:5000/EmployeeReqLeave`).then(res => {
-            //console.table(res.data)
             this.setState({
                 empLeaveData: res.data
             })
@@ -26,11 +25,13 @@ class EmployeeReqLeave extends Component {
         })
     }
 
+    // filter data for employee id 
     filterContent(empLeaveData, searchEmp) {
         const result = empLeaveData.filter((empLeaveData) => empLeaveData.empID.includes(searchEmp));
         this.setState({empLeaveData:result});
     }
 
+     // mapping to EmployeeLeaveList the record
     getReqLeaveData() {
         return this.state.empLeaveData.map((res, index) => {
             return <EmployeeLeaveList obj={res} key={index} />

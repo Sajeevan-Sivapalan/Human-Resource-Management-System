@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 import AdminEmpLeaveList from "./AdminEmpLeaveList";
-import {Link} from "react-router-dom";
-import { Form, Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 
 class AdminReqLeave extends Component {
     constructor(props) {
@@ -13,6 +11,7 @@ class AdminReqLeave extends Component {
     }
 
     componentDidMount() {
+        // get all employee leave request 
         axios.get('http://localhost:5000/AdminReqLeave').then(res => {
             this.setState({
                 empLeaveData: res.data
@@ -23,6 +22,7 @@ class AdminReqLeave extends Component {
         })
     }
 
+    // search using employee id
     searchReqLeaveData = (event) => {
         
         const searchReqLeave = event.currentTarget.value;
@@ -35,11 +35,13 @@ class AdminReqLeave extends Component {
         })
     }
 
+    // filter data for employee id 
     filterContent(empLeaveData, searchReqLeave) {
         const result = empLeaveData.filter((empLeaveData) => empLeaveData.empID.includes(searchReqLeave));
         this.setState({empLeaveData:result});
     }
 
+     // mapping to AdminEmpLeaveList the record
     getReqLeaveData = () => {
         return this.state.empLeaveData.map((res, index) => {
             return <AdminEmpLeaveList obj={res} key={index} />

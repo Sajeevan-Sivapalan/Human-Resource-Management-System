@@ -38,6 +38,18 @@ recordRoutes.route("/AttendanceEntry").post(function (req, res) {
     console.log("Error -> delete Attendance " + err);
   })
  });
+
+ // update
+ recordRoutes.route("/updateAttendance/:id").put(function (req, res)  {
+  let objID = req.params.id;
+
+  AttendanceSchema.findByIdAndUpdate(objID, req.body).then(() => {
+    res.json(objID);
+  })
+  .catch((err) => {
+    console.log("Error -> update Attendance " + err);
+  })
+ });
  
 module.exports = recordRoutes;
 
@@ -55,17 +67,5 @@ unused codes
       console.log("Error -> read one attendance " + err);
     })
   });
-
-// update
- recordRoutes.route("/updateAttendance/:id").put(function (req, res)  {
-  let objID = req.params.id;
-
-  AttendanceSchema.findByIdAndUpdate(objID, req.body).then(() => {
-    res.json(objID);
-  })
-  .catch((err) => {
-    console.log("Error -> update Attendance " + err);
-  })
- });
 
  */

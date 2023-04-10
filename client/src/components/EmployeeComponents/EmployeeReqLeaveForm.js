@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Button, FormGroup, FormControl, DropdownButton, Dropdown } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import axios from "axios";
 
 class EmployeeReqLeaveForm extends Component {
@@ -113,6 +113,7 @@ class EmployeeReqLeaveForm extends Component {
         }
     }
 
+    // check box will not enable if there are any errors in input 
     chcCheck = (event) => {
         var chcBtn = document.getElementById("chcBox");
         var subButton = document.getElementById("LRFsubmit");
@@ -133,6 +134,7 @@ class EmployeeReqLeaveForm extends Component {
             subButton.disabled = false;
     }
 
+    // create a employee leave request
     reqLeave = (event) => {
         event.preventDefault();
         const leaveObj = {
@@ -144,6 +146,8 @@ class EmployeeReqLeaveForm extends Component {
             reason: this.state.reason,
             status: "pending"
         }
+
+        // create a employee leave request 
         axios.post('http://localhost:5000/EmployeeReqLeave/reqEmpLeave', leaveObj).then(res => {
             console.log(res.data);
             window.location.replace("http://localhost:3000/emp/EmployeeReqLeave");

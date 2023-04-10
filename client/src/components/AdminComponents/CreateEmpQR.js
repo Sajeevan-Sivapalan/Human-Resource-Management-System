@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import QRCode from 'qrcode.react';
 
 function CreateEmpQR() {
@@ -8,6 +8,7 @@ function CreateEmpQR() {
         setEmpID(event.target.value);
     }
 
+    // download QR
     const downloadQR = () => {
         var qrURL = document.getElementById('QRcodeImg');
         var pngUrl = qrURL.toDataURL("image/png")
@@ -19,6 +20,7 @@ function CreateEmpQR() {
         dL.click();
         document.body.removeChild(dL);
     }
+    
     return(
         <>
             

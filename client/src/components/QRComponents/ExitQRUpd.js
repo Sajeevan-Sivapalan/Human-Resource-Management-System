@@ -9,7 +9,9 @@ class ExitQRUpd extends Component {
         }
     }
 
+    // update exit time and duration
     updateExitTime = (id) => {
+        // check whether already exited or not 
         if(this.props.obj.exitTime != ""){
             alert("already exited");
             window.location.replace("http://localhost:3000/exitQR");
@@ -18,8 +20,9 @@ class ExitQRUpd extends Component {
             const currentDateTime = new Date();
             const entryTimeFor = new Date();
             const exitTimeFor = new Date();
-            const time = currentDateTime.toLocaleTimeString("en-US");
+            const time = currentDateTime.toLocaleTimeString("en-US"); // get current time
 
+            //convert entry time => string to time format 
             const entryT = this.props.obj.enterTime;
             const entryTime = entryT.match(/^(\d{1,2}):(\d{2}):(\d{2})\s+(AM|PM)$/i);
             const hours = parseInt(entryTime[1], 10) + (entryTime[4].toLowerCase() === 'pm' ? 12 : 0);
@@ -28,11 +31,17 @@ class ExitQRUpd extends Component {
             entryTimeFor.setHours(hours);
             entryTimeFor.setMinutes(minutes);
             entryTimeFor.setSeconds(seconds);
-            
+
+            // convert the duration to time format 
             const entryTimeFormat = entryTimeFor.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true });
 
+            // convert exit time => string to time format 
             const curTime = new Date(`January 1, 1970 ${time}`);
+
+            // calculate time difference
             const timeDifference = curTime.getTime() - entryTimeFor.getTime();
+
+            // convert time difference => string to time format 
             const timeDifferenceObj = new Date(timeDifference);
             const hours1 = timeDifferenceObj.getUTCHours();
             const minutes1 = timeDifferenceObj.getUTCMinutes();
@@ -40,14 +49,16 @@ class ExitQRUpd extends Component {
             exitTimeFor.setHours(hours1);
             exitTimeFor.setMinutes(minutes1);
             exitTimeFor.setSeconds(seconds1);
+
+            // convert the duration to time format 
             const timeDifferentFormat = exitTimeFor.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: false });
-            alert(timeDifference);
 
             const attendanceObj = {
                 exitTime: time,
                 timeDifference: timeDifferentFormat
             };
 
+            // update exit time and duration for particular employee and date 
             axios.put(`http://localhost:5000/Attendance/updateAttendance/${id}`, attendanceObj).then(() => {
                 window.location.replace("http://localhost:3000/exitQR");
             })

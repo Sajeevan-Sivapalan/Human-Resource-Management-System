@@ -7,18 +7,14 @@ class EntranceQR extends Component {
         super(props);
     }
 
+    // scan entrance QR value and create record
     scanQR = (data) => {
         if (data) {
           const currentDateTime = new Date();
-          const date = `${currentDateTime.getFullYear()}-${currentDateTime.getMonth()+1}-${currentDateTime.getDate()}`;
-          const time = currentDateTime.toLocaleTimeString("en-US");
+          const date = `${currentDateTime.getFullYear()}-${currentDateTime.getMonth()+1}-${currentDateTime.getDate()}`; // get current date
+          const time = currentDateTime.toLocaleTimeString("en-US"); // get current time
 
-          /*const attendanceObj = {
-            empID: data,
-            date: date,
-            enterTime: time
-          };*/
-
+          // get all attendance record and sending to filterContent method
           axios.get(`http://localhost:5000/Attendance`).then(res => {
                 this.filterContent(res.data, date, time, data);
           })
@@ -28,6 +24,7 @@ class EntranceQR extends Component {
         }
       };
 
+      // filter data for employee id and date for check whether already entered or not 
       filterContent(attendanceData, date, time, data) {
         const result = attendanceData.filter((attendanceData) => attendanceData.empID.includes(data));
         this.setState({attendanceData:result});
@@ -56,6 +53,7 @@ class EntranceQR extends Component {
         }
       }
     
+      // show any errors in qr reader
       onScanError = (err) => {
         console.error(err);
       };

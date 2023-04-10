@@ -1,5 +1,4 @@
 import React, { Component, useState } from "react";
-import QRCode from "react-qr-code";
 import CreateEmpQR from "./CreateEmpQR";
 import axios from "axios";
 import AttendanceList from "./AttendanceList";
@@ -16,6 +15,7 @@ class Attendance extends Component {
     }
 
     componentDidMount() {
+        // get all attendance record
         axios.get('http://localhost:5000/Attendance').then(res => {
             this.setState({
                 attendanceData: res.data
@@ -26,6 +26,7 @@ class Attendance extends Component {
         })
     }
 
+    // search using employee id
     searchEmployeeAttendanceData = (event) => {
         const searchEmp = event.currentTarget.value;
         axios.get(`http://localhost:5000/Attendance`).then(res => {
@@ -36,11 +37,13 @@ class Attendance extends Component {
         })
     }
 
+    // filter data for employee id 
     filterContent(attendanceData, searchEmp) {
         const result = attendanceData.filter((attendanceData) => attendanceData.empID.includes(searchEmp));
         this.setState({attendanceData:result});
     }
 
+     // mapping to AttendanceList the record
     getAttendanceData = () => {
         return this.state.attendanceData.map((res, index) => {
             return <AttendanceList obj={res} key={index} />

@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import { Form, Button, FormGroup, FormControl, DropdownButton, Dropdown } from "react-bootstrap";
 import axios from "axios";
 import EmployeeAttendanceList from "./EmployeeAttendanceList";
-import ReactHTMLTableToExcel from "react-html-table-to-excel";
 
 class ViewSuspiciousLeaveRecord extends Component {
     constructor(props) {
@@ -13,6 +11,7 @@ class ViewSuspiciousLeaveRecord extends Component {
     }
     
     componentDidMount() {
+        // get all suspicious leave records
         axios.get('http://localhost:5000/SuspiciousEmpLeave').then(res => {
             this.setState({
                 empID: '',
@@ -24,10 +23,13 @@ class ViewSuspiciousLeaveRecord extends Component {
         })
     }
 
+    // search using employee id
     searchEmployeeAttendanceData = (event) => {
         event.preventDefault();
         this.setState({empID:event.currentTarget.value});
         const searchEmp = event.currentTarget.value;
+
+        // get all suspicious leave records
         axios.get(`http://localhost:5000/SuspiciousEmpLeave`).then(res => {
                 this.filterContent(res.data, searchEmp);
         })
@@ -36,11 +38,13 @@ class ViewSuspiciousLeaveRecord extends Component {
         })
     }
 
+    // filter data for employee id 
     filterContent(attendanceData, searchEmp) {
         const result = attendanceData.filter((attendanceData) => attendanceData.empID.includes(searchEmp));
         this.setState({attendanceData:result});
     }
 
+    // mapping to EmployeeAttendanceList the record
     getSuspiciousAttendanceData = () => {
         return this.state.attendanceData.map((res, index) => {
             return <EmployeeAttendanceList obj={res} key={index} />

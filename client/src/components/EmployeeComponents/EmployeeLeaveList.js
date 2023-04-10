@@ -1,7 +1,5 @@
 import axios from "axios";
 import React, { Component } from "react";
-import { Form, Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
-import { Link } from "react-router-dom";
 
 class EmployeeLeaveList extends Component {
     constructor(props) {
@@ -15,20 +13,25 @@ class EmployeeLeaveList extends Component {
         this.setState({reason:event.target.value});
     }
 
+    // delete employee leave record
     deleteLeave = (id) => {
         var result = window.confirm('Do you want to cancel this request ?');
 
         if(result == true) {
+            // delete employee leave record
             axios.delete(`http://localhost:5000/EmployeeReqLeave/deleteEmpLeave/${id}`).then(() => {
                 window.location.replace("http://localhost:3000/emp/EmployeeReqLeave");
             })
         }
     }
 
+    // update employee leave record
     updateReqLeave = (id) => {
         const leaveObj = {
             reason: this.state.reason
         }
+        
+         // update employee leave record
         axios.put(`http://localhost:5000/AdminReqLeave/updateEmpLeave/${id}`, leaveObj).then(() => {
             window.location.replace("http://localhost:3000/emp/EmployeeReqLeave");
         })

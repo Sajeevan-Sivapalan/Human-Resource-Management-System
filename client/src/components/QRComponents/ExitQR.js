@@ -11,13 +11,14 @@ class ExitQR extends Component {
         }
     }
 
+    // scan exit QR value and get all record
     scanQR = (data) => {
         if (data) {
           const currentDateTime = new Date();
-          const date = `${currentDateTime.getFullYear()}-${currentDateTime.getMonth()+1}-${currentDateTime.getDate()}`;
+          const date = `${currentDateTime.getFullYear()}-${currentDateTime.getMonth()+1}-${currentDateTime.getDate()}`; // get current date
           alert("Thank you " + data);
           
-
+        // get all attendance record and sending to filterContent method
           axios.get(`http://localhost:5000/Attendance`).then(res => {
             this.filterContent(res.data, date, data);
           })
@@ -27,6 +28,7 @@ class ExitQR extends Component {
         }
       };
 
+      // filter data for employee id and date for update exit time
       filterContent(attendanceData, date, data) {
         const result = attendanceData.filter((attendanceData) => attendanceData.empID.includes(data));
         this.setState({attendanceData:result});
@@ -34,10 +36,12 @@ class ExitQR extends Component {
         this.setState({attendanceData:result1});
       }
     
+      // show any errors in qr reader
       onScanError = (err) => {
         console.error(err);
       };
 
+      // mapping to ExitQRUpd the record
       getAttendanceData = () => {
         return this.state.attendanceData.map((res, index) => {
             return <ExitQRUpd obj={res} key={index} />
