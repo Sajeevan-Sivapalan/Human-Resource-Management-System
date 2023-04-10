@@ -15,12 +15,10 @@ const SuspiciousLeaveSchema = new Schema({
         required: true
     },
     exitTime: {
-        type: String, 
-        //required: true
+        type: String
     },
     timeDifference: {
-        type: String, 
-        //required: true
+        type: String
     }
 }, {
     collection: 'suspiciousLeave'

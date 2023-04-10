@@ -29,15 +29,17 @@ app.use(bodyParser.urlencoded({
 app.use(cors());
 app.use(express.json());
 
-//http://localhost:3000/EmployeeReqLeave
+//Leave and attendance management system
+
+//http://localhost:5000/EmployeeReqLeave
 const employeeLeaveRequestData = require("./routes/EmployeeLeaveReq");
 app.use('/EmployeeReqLeave', employeeLeaveRequestData);
 
-//http://localhost:3000/AdminReqLeave
+//http://localhost:5000/AdminReqLeave
 const adminEmpLeaveRequestData = require("./routes/EmployeeLeaveReq");
 app.use('/AdminReqLeave', adminEmpLeaveRequestData);
 
-//http://localhost:3000/Attendance
+//http://localhost:5000/Attendance
 const employeeAttendanceData = require("./routes/EmployeeAttendance");
 app.use('/Attendance', employeeAttendanceData);
 

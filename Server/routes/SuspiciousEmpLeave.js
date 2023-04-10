@@ -4,11 +4,11 @@ const recordRoutes = express.Router();
 
 let SuspiciousLeaveSchema = require("../model/SuspiciousEmployeeLeave");
 
-// create a new record.
+// create
 recordRoutes.route("/addSuspiciousLeaveRecord").post(function (req, res) {
     SuspiciousLeaveSchema.create(req.body, (err, data) => {
     if (err)
-      console.log("Error in add suspicious leave record " + err);
+      console.log("Error -> create suspicious leave record " + err);
     else{
       console.log(data);
       res.json(data);
@@ -16,41 +16,47 @@ recordRoutes.route("/addSuspiciousLeaveRecord").post(function (req, res) {
   })
  });
 
- // get all records.
+ // read all records.
  recordRoutes.route("/").get(function (req, res) {
     SuspiciousLeaveSchema.find((err, data) => {
     if(err)
-      console.log("Error in get suspicious leave record" + err);
+      console.log("Error -> read all suspicious leave record" + err);
     else{
       res.json(data);
     }
   })
  });
 
- //one  user record
+module.exports = recordRoutes;
+
+/**
+ 
+unused codes 
+
+//read one record
  recordRoutes.route("/:empID").get(function (req, res) {
   let empID = req.params.empID;
   SuspiciousLeaveSchema.find({"empID": `${empID}`}).then(() => {
       res.json(empID);
     })
-    .catch(() => {
-      console.log("Error in search record");
+    .catch((err) => {
+      console.log("Error -> read one suspicious leave record " + err);
     })
   });
 
- // delete a record.
+ // delete
  recordRoutes.route("/deleteEmpLeave/:id").delete(function (req, res)  {
   let objID = req.params.id;
 
   SuspiciousLeaveSchema.findByIdAndDelete(objID).then(() => {
     res.json(objID);
   })
-  .catch(() => {
-    console.log("Error in delete leave form");
+  .catch((err) => {
+    console.log("Error -> delete suspicious leave record " + err);
   })
  });
 
- // update a record.
+ // update
  recordRoutes.route("/updateEmpLeave/:id").put(function (req, res)  {
   let objID = req.params.id;
 
@@ -58,8 +64,8 @@ recordRoutes.route("/addSuspiciousLeaveRecord").post(function (req, res) {
     res.json(objID);
   })
   .catch((err) => {
-    console.log("Error in update leave form" + err);
+    console.log("Error -> update suspicious leave record " + err);
   })
  });
- 
-module.exports = recordRoutes;
+
+ */

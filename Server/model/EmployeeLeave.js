@@ -3,8 +3,7 @@ const { Schema } = mongoose;
 
 const LeaveRequestSchema = new Schema({
     empID: {
-        type: String, 
-        //required: true
+        type: String
     },
     fName: {
         type: String, 
