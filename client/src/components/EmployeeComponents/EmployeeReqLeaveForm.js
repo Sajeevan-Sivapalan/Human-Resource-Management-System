@@ -26,8 +26,8 @@ class EmployeeReqLeaveForm extends Component {
 
         var errorMessage = document.getElementById("errMsgEmpID");
         
-        if(this.state.empID.length <= 3) {
-            errorMessage.innerHTML = "Minimum length must be 3";
+        if(this.state.empID.length < 2) {
+            errorMessage.innerHTML = "The minimum length of employee id should be 3";
             this.setState({errorEmpID: false});
         }
         else {
@@ -40,8 +40,8 @@ class EmployeeReqLeaveForm extends Component {
         this.setState({fName:event.target.value});
 
         var errorMessage = document.getElementById("errMsgFName");
-        if(this.state.fName.length <= 3){
-            errorMessage.innerHTML = "Minimum length must be 3";
+        if(this.state.fName.length < 2){
+            errorMessage.innerHTML = "The minimum length of name should be 3";
             this.setState({errorFName: false});
         }
         else {
@@ -84,12 +84,12 @@ class EmployeeReqLeaveForm extends Component {
         var errorMessage1 = document.getElementById("errMsgDate");
         if(dayDifferent < 0) {
             
-            errorMessage1.innerHTML = "Invalid date formate";
+            errorMessage1.innerHTML = "Invalid date selection";
             this.setState({errorDate: false});
             
             var errorMessage = document.getElementById("errMsgReason");
-            if(this.state.reason.length <= 3){
-                errorMessage.innerHTML = "Minimum length must be 3";
+            if(this.state.reason.length < 2){
+                errorMessage.innerHTML = "The minimum length of reason should be 3";
                 this.setState({errorReason: false});
             }
             else {
@@ -102,8 +102,8 @@ class EmployeeReqLeaveForm extends Component {
             errorMessage1.innerHTML = "";
             
             var errorMessage = document.getElementById("errMsgReason");
-            if(this.state.reason.length <= 3){
-                errorMessage.innerHTML = "Minimum length must be 3";
+            if(this.state.reason.length < 2){
+                errorMessage.innerHTML = "The minimum length of reason should be 3";
                 this.setState({errorReason: false});
             }
             else {
@@ -125,7 +125,7 @@ class EmployeeReqLeaveForm extends Component {
                 errorMessage.innerHTML = "";
             }
             else{
-                errorMessage.innerHTML = "fill all the fields";
+                errorMessage.innerHTML = "Fill all the fields";
                 subButton.disabled = true;
                 chcBtn.checked = false;
             }
