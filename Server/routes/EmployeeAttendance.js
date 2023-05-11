@@ -2,7 +2,7 @@ const mongoose = require("mongoose")
 const express = require("express");
 const recordRoutes = express.Router();
 
-let AttendanceSchema = require("../model/EmployeeAttendance");
+let AttendanceSchema = require("../models/EmployeeAttendance");
 
 // create 
 recordRoutes.route("/AttendanceEntry").post(function (req, res) {

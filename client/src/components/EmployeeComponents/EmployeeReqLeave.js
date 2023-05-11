@@ -1,55 +1,59 @@
+import React, { useState, useEffect } from 'react'
 import axios from "axios";
-import React, { Component } from "react";
 import EmployeeReqLeaveForm from "./EmployeeReqLeaveForm";
 import EmployeeLeaveList from "./EmployeeLeaveList";
+import useAuth from '../../hooks/useAuth';
+import useTitle from '../../hooks/useTitle';
 
-class EmployeeReqLeave extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            empID: "emp111",
-            empLeaveData: []
-        }
-    }
+const EmployeeReqLeave = () => {
+    useTitle("Employee Leave Request");
 
-    componentDidMount() {
+    const [empLeaveData, setEmpReqList] = useState([])
+    const { username, status } = useAuth()
+
+    //Retrieve all the resources
+    const retrieveEmpReqList = () => {
         // get all Employee request leave record and sending to filterContent method
         axios.get(`http://localhost:5000/EmployeeReqLeave`).then(res => {
-            this.setState({
-                empLeaveData: res.data
+            setEmpReqList(res.data)
+            filterContent(res.data, username);
+        })
+            .catch((err) => {
+                console.log(err);
             })
-            this.filterContent(res.data, this.state.empID);
-        })
-        .catch((err) => {
-            console.log(err);
-        })
     }
+
+    useEffect(() => {
+        retrieveEmpReqList()
+    }, [])
+
 
     // filter data for employee id 
-    filterContent(empLeaveData, searchEmp) {
-        const result = empLeaveData.filter((empLeaveData) => empLeaveData.empID.includes(searchEmp));
-        this.setState({empLeaveData:result});
+    const filterContent = (empLeaveData, searchEmp) => {
+        const result = empLeaveData.filter((empLeaveData) => empLeaveData.username.includes(searchEmp));
+        setEmpReqList(result)
     }
 
-     // mapping to EmployeeLeaveList the record
-    getReqLeaveData() {
-        return this.state.empLeaveData.map((res, index) => {
+    // mapping to EmployeeLeaveList the record
+    const getReqLeaveData = () => {
+        return empLeaveData.map((res, index) => {
             return <EmployeeLeaveList obj={res} key={index} />
         }
-    )}
-
-    render() {
-        return(
-            <>
-                <EmployeeReqLeaveForm></EmployeeReqLeaveForm>
-                <div class="leave-list">
-                    <div class="row justify-content-center">
-                        {this.getReqLeaveData()}
-                    </div>
-                </div>
-            </>
-        );
+        )
     }
+
+
+    return (
+        <>
+            <EmployeeReqLeaveForm></EmployeeReqLeaveForm>
+            <div class="leave-list">
+                <div class="row justify-content-center">
+                    {getReqLeaveData()}
+                </div>
+            </div>
+        </>
+    );
+
 }
 
-export default EmployeeReqLeave;
+export default EmployeeReqLeave

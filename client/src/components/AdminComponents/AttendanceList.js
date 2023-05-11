@@ -28,7 +28,7 @@ class AttendanceList extends Component {
 
             // delete leave record  
             axios.delete(`http://localhost:5000/Attendance/deleteAttendance/${id}`).then(() => {
-                window.location.replace("http://localhost:3000/admin/Attendance");
+                window.location.replace("http://localhost:3000/dash/admin/Attendance");
             })
         }
     }

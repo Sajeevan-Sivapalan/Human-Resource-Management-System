@@ -2,7 +2,7 @@ const mongoose = require("mongoose")
 const express = require("express");
 const recordRoutes = express.Router();
 
-let LeaveRequestSchema = require("../model/EmployeeLeave");
+let LeaveRequestSchema = require("../models/EmployeeLeave");
 
 // create
 recordRoutes.route("/reqEmpLeave").post(function (req, res) {

@@ -2,7 +2,7 @@ const mongoose = require("mongoose")
 const express = require("express");
 const recordRoutes = express.Router();
 
-let SuspiciousLeaveSchema = require("../model/SuspiciousEmployeeLeave");
+let SuspiciousLeaveSchema = require("../models/SuspiciousEmployeeLeave");
 
 // create
 recordRoutes.route("/addSuspiciousLeaveRecord").post(function (req, res) {

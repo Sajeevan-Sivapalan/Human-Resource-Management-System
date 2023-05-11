@@ -1,13 +1,34 @@
 import React from "react";
+import { useEffect } from 'react'
+import { useSendLogoutMutation } from "../../features/auth/authApiSlice";
+import { useNavigate } from 'react-router-dom'
+import useAuth from "../../hooks/useAuth";
 
 function NavBar() {
-    return(
-        <nav class="navbar fixed-top bg-light">
+    const navigate = useNavigate()
+    const date = new Date();
+    const today = new Intl.DateTimeFormat('en-US', {dateStyle: 'full'}, {timeStyle: 'long'}).format(date);
+
+    const { username, status } = useAuth()
+
+    const [sendLogout, {
+        isLoading,
+        isSuccess,
+        isError,
+        error
+    }] = useSendLogoutMutation()
+
+    useEffect(() => {
+        if (isSuccess)
+            navigate('/')
+    }, [isSuccess, navigate])
+
+    return (
+        <nav class="navbar fixed-top bg-primary">
             <div class="container-fluid">
-                <a class="navbar-brand">HR system</a>
-                <form class="d-flex" role="search">
-                <button class="btn btn-outline-success" type="submit">Logout</button>
-                </form>
+                <div><h6 class="text-light">{today}</h6></div>
+                <h6 class="text-light">{username} : {status}</h6>
+                <button class="btn btn-outline-light" type="submit" onClick={sendLogout}>Logout</button>
             </div>
         </nav>
     );

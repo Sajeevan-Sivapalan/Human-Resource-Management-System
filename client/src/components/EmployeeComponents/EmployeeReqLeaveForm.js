@@ -7,7 +7,7 @@ class EmployeeReqLeaveForm extends Component {
         super(props);
         this.state = {
             empID: '',
-            fName: '',
+            username: '',
             leaveType:'',
             sDate: '',
             eDate: '',
@@ -25,9 +25,13 @@ class EmployeeReqLeaveForm extends Component {
         this.setState({empID:event.target.value});
 
         var errorMessage = document.getElementById("errMsgEmpID");
-        
-        if(this.state.empID.length < 2) {
-            errorMessage.innerHTML = "The minimum length of employee id should be 3";
+        if(this.state.empID[0] != "U"){
+            errorMessage.innerHTML = "Employee Id should start with U";
+            this.setState({errorEmpID: false});
+        }
+        else
+        if(this.state.empID.length < 4) {
+            errorMessage.innerHTML = "The minimum length of employee id should be 5";
             this.setState({errorEmpID: false});
         }
         else {
@@ -37,11 +41,11 @@ class EmployeeReqLeaveForm extends Component {
     }
 
     onChangeFName = (event) => {
-        this.setState({fName:event.target.value});
+        this.setState({username:event.target.value});
 
         var errorMessage = document.getElementById("errMsgFName");
-        if(this.state.fName.length < 2){
-            errorMessage.innerHTML = "The minimum length of name should be 3";
+        if(this.state.username.length < 2){
+            errorMessage.innerHTML = "The minimum length of user name should be 3";
             this.setState({errorFName: false});
         }
         else {
@@ -139,7 +143,7 @@ class EmployeeReqLeaveForm extends Component {
         event.preventDefault();
         const leaveObj = {
             empID: this.state.empID,
-            fName: this.state.fName,
+            username: this.state.username,
             leaveType: this.state.leaveType,
             sDate: this.state.sDate,
             eDate: this.state.eDate,
@@ -150,7 +154,7 @@ class EmployeeReqLeaveForm extends Component {
         // create a employee leave request 
         axios.post('http://localhost:5000/EmployeeReqLeave/reqEmpLeave', leaveObj).then(res => {
             console.log(res.data);
-            window.location.replace("http://localhost:3000/emp/EmployeeReqLeave");
+            window.location.replace("http://localhost:3000/dash/emp/EmployeeReqLeave");
         })
         .catch((err) => {
             console.log(err);
@@ -158,7 +162,7 @@ class EmployeeReqLeaveForm extends Component {
 
         this.state({
             empID: '',
-            fName: '',
+            username: '',
             leaveType: '',
             sDate: '',
             eDate: '',
@@ -195,8 +199,8 @@ class EmployeeReqLeaveForm extends Component {
                                     </div>
                                 </div>
                                 <div class="col-6">
-                                    <label class="form-label">First Name</label>
-                                    <Form.Control type="text" class="form-control" value={this.state.fName} onChange={this.onChangeFName} />
+                                    <label class="form-label">User Name</label>
+                                    <Form.Control type="text" class="form-control" value={this.state.username} onChange={this.onChangeFName} />
                                     <div class="form-feedback">
                                         <span id="errMsgFName"></span>
                                     </div>

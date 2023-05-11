@@ -1,0 +1,322 @@
+import React from 'react';
+import { useState } from 'react'
+import { useQuery } from '@tanstack/react-query';
+import { useParams } from 'react-router-dom';
+// import { CheckCircleIcon, CheckCircleOutlineIcon } from '@mui/icons-material';
+import { Box, Drawer, List, CssBaseline, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography, Divider, Toolbar, Switch, Button } from '@mui/material'
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import { minHeight } from '@mui/system';
+import fetchCourse from '../../../utils/fetchCourse';
+
+const ModulePage = () => {
+
+
+    const { id, mid } = useParams()
+    const courseResult = useQuery(["details", id], fetchCourse)
+    console.log(courseResult.data)
+
+
+    if (courseResult.isLoading) {
+        return <h1>Loading....</h1>
+    }
+
+    const { _id, cid, description, cname, enrollers, skills, updatedAt, ETC, createdAt } = courseResult.data
+
+
+
+    // const moduleList = modules.map((module, index) => (
+    //     <ListItem key={module._id} disablePadding>
+    //         <ListItemButton
+    //         // selected={contentIndex === index}
+    //         // onClick={() => { handleSelected(content, index) }}
+    //         >
+    //             <ListItemIcon sx={{ marginRight: "0" }} onClick={() => { }}>
+    //                 {/* {complete[index] ? <CheckCircleIcon color="primary" /> : <CheckCircleOutlineIcon color="primary" />} */}
+    //             </ListItemIcon>
+    //             <ListItemText primaryTypographyProps={{ fontSize: "0.9rem", fontWeight: "500", color: "#212121" }} primary={module.header} />
+    //         </ListItemButton>
+    //     </ListItem>
+    // ))
+
+    const [selected, setSelected] = useState()
+
+   
+
+    // const moduleList = module.content.map((content, index) => (
+    //     <ListItem key={content.header} disablePadding>
+    //         <ListItemButton
+    //             selected={contentIndex === index}
+    //             // onClick={() => { handleSelected(content, index) }}
+    //         >
+    //             <ListItemIcon sx={{ marginRight: "0" }} onClick={() => {  }}>
+    //                 {/* {complete[index] ? <CheckCircleIcon color="primary" /> : <CheckCircleOutlineIcon color="primary" />} */}
+    //             </ListItemIcon>
+    //             <ListItemText primaryTypographyProps={{ fontSize: "0.9rem", fontWeight: "500", color: "#212121" }} primary={content.header} />
+    //         </ListItemButton>
+    //     </ListItem>
+    // ))
+
+    return (
+        <Box sx={{ display: 'flex', paddingTop: 6 }}>
+            <Drawer
+                sx={{
+                    width: drawerWidth,
+                    flexShrink: 0,
+                    '& .MuiDrawer-paper': {
+                        width: drawerWidth,
+                        boxSizing: 'border-box',
+                    },
+
+                }}
+                variant="permanent"
+                anchor="left"
+            >
+
+                <Toolbar />
+                <Divider />
+                <Typography variant='h6' p={1} pl={2}
+                    sx={{ fontSize: "1rem", fontWeight: "500", color: "#61616", backgroundColor: "" }}
+                >
+                    Lessons
+                </Typography>
+                <Divider />
+                <List>
+                    {/* {moduleList} */}
+                </List>
+            </Drawer>
+
+            <Box component="main" sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3, color: "black", backgroundColor: "#f5f5f5", minHeight: "100vh" }}>
+                {selected && (
+                    <Box backgroundColor="#ffff">
+                        <Divider />
+                        {/* <Typography variant='h3' color="primary" p={1} pl={4}>{selected.header}</Typography> */}
+                        <Divider />
+                        <Box p={1} pl={4} pr={4}>
+                            {/* <Box sx={{ fontFamily: "Roboto" }} dangerouslySetInnerHTML={{ __html: selected.content }} /> */}
+                        </Box>
+                        <Box pb={3} pl={4}>
+                            {/* <Button sx={{ marginRight: "15px" }} onClick={handlePrevious} disabled={contentIndex === 0}>Previous</Button>
+                            <Button onClick={handleNext} disabled={contentIndex === module.content.length - 1}>Next</Button> */}
+                        </Box>
+                    </Box>
+                )}
+            </Box>
+
+        </Box>
+    )
+
+}
+
+export default ModulePage
+
+
+// import { useState } from 'react'
+
+// // import { CheckCircleIcon , CheckCircleOutlineIcon } from '@mui/icons-material';
+// import { Box, Drawer, List, CssBaseline, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography, Divider, Toolbar, Switch, Button } from '@mui/material'
+// import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+// import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+// import { minHeight } from '@mui/system';
+
+
+// const ModulePage = () => {
+
+//     const drawerWidth = 260;
+
+
+//     const moduleObj = {
+//         courseId: "60f9c6a0e7b1d00015c07f10",
+//         content: [
+//             {
+//                 header: "Introduction",
+//                 content: "<p>This is a course about <strong>react</strong> and <em>mongodb</em>.</p>",
+//             },
+//             {
+//                 header: "What is React?",
+//                 content: "<p>React is a library for building user interfaces.</p><p>It uses a concept called <strong>components</strong> to create reusable UI elements.</p>",
+//             },
+//             {
+//                 header: "What is MongoDB?",
+//                 content: "<p>MongoDB is a database that stores data in <strong>documents</strong>.</p><p>It uses a flexible schema and supports various data types.</p>",
+//             },
+//             {
+//                 header: "How to set up React?",
+//                 content: "<p>You can use <a href='https://create-react-app.dev/'>Create React App</a> to quickly set up a react project.</p><p>You will need to have <a href='https://nodejs.org/en/'>Node.js</a> and <a href='https://www.npmjs.com/'>npm</a> installed on your machine.</p>",
+//             },
+//             {
+//                 header: "How to set up MongoDB?",
+//                 content: "<p>You can use <a href='https://www.mongodb.com/cloud/atlas'>MongoDB Atlas</a> to create a free cloud database.</p><p>You will need to create an account and follow the instructions to connect to your database.</p>",
+//             },
+//             {
+//                 header: "Introduction",
+//                 content: "<p>This is a course about <strong>react</strong> and <em>mongodb</em>.</p>",
+//             },
+//             {
+//                 header: "What is React?",
+//                 content: "<p>React is a library for building user interfaces.</p><p>It uses a concept called <strong>components</strong> to create reusable UI elements.</p>",
+//             },
+//             {
+//                 header: "What is MongoDB?",
+//                 content: "<p>MongoDB is a database that stores data in <strong>documents</strong>.</p><p>It uses a flexible schema and supports various data types.</p>",
+//             },
+//             {
+//                 header: "How to set up React?",
+//                 content: "<p>You can use <a href='https://create-react-app.dev/'>Create React App</a> to quickly set up a react project.</p><p>You will need to have <a href='https://nodejs.org/en/'>Node.js</a> and <a href='https://www.npmjs.com/'>npm</a> installed on your machine.</p>",
+//             },
+//             {
+//                 header: "How to set up MongoDB?",
+//                 content: "<p>You can use <a href='https://www.mongodb.com/cloud/atlas'>MongoDB Atlas</a> to create a free cloud database.</p><p>You will need to create an account and follow the instructions to connect to your database.</p>",
+//             },
+//             {
+//                 header: "Introduction",
+//                 content: "<p>This is a course about <strong>react</strong> and <em>mongodb</em>.</p>",
+//             },
+//             {
+//                 header: "What is React?",
+//                 content: "<p>React is a library for building user interfaces.</p><p>It uses a concept called <strong>components</strong> to create reusable UI elements.</p>",
+//             },
+//             {
+//                 header: "What is MongoDB?",
+//                 content: "<p>MongoDB is a database that stores data in <strong>documents</strong>.</p><p>It uses a flexible schema and supports various data types.</p>",
+//             },
+//             {
+//                 header: "How to set up React?",
+//                 content: "<p>You can use <a href='https://create-react-app.dev/'>Create React App</a> to quickly set up a react project.</p><p>You will need to have <a href='https://nodejs.org/en/'>Node.js</a> and <a href='https://www.npmjs.com/'>npm</a> installed on your machine.</p>",
+//             },
+//             {
+//                 header: "How to set up MongoDB?",
+//                 content: "<p>You can use <a href='https://www.mongodb.com/cloud/atlas'>MongoDB Atlas</a> to create a free cloud database.</p><p>You will need to create an account and follow the instructions to connect to your database.</p>",
+//             }
+//         ]
+//     }
+
+//     //states
+//     const [module, setModule] = useState(moduleObj)
+//     const [selected, setSelected] = useState()
+//     const [contentIndex, setContentIndex] = useState(0)
+//     const [complete, setComplete] = useState(Array(module.length).fill(false))
+
+//     const handleSelected = (content, index) => {
+//         setSelected(content)
+//         setContentIndex(index)
+//     }
+
+//     const handleComplete = (index) => {
+//         setComplete((prev) => {
+//             const arr = [...prev]
+//             arr[index] = !arr[index]
+//             return arr
+//         })
+//     }
+
+//     const handleNext = () => {
+//         if (contentIndex < moduleList.length - 1) {
+//             setContentIndex(prev => prev + 1)
+//             setSelected(module.content[contentIndex + 1])
+
+//             //should updated in personal
+//             if (!complete[contentIndex]) {
+//                 handleComplete(contentIndex)
+//             }
+//         }
+
+//     }
+
+//     const handlePrevious = () => {
+//         if (contentIndex > 0) {
+//             setContentIndex(prev => prev - 1)
+//             setSelected(module.content[contentIndex - 1])
+//         }
+//     }
+
+//     const moduleList = module.content.map((content, index) => (
+//         <ListItem key={content.header} disablePadding>
+//             <ListItemButton
+//                 selected={contentIndex === index}
+//                 onClick={() => { handleSelected(content, index) }}
+//             >
+//                 <ListItemIcon sx={{ marginRight: "0" }} onClick={() => { handleComplete(index) }}>
+//                     {complete[index] ? <CheckCircleIcon color="primary" /> : <CheckCircleOutlineIcon color="primary" />}
+//                 </ListItemIcon>
+//                 <ListItemText primaryTypographyProps={{ fontSize: "0.9rem", fontWeight: "500", color: "#212121" }} primary={content.header} />
+//             </ListItemButton>
+//         </ListItem>
+//     ))
+
+//     // const [state, setState] = useState(Array(modules.length).fill(true))
+
+//     // const handleChange = (index) => {
+//     //     setState(prev => {
+//     //         const arr = [...prev]
+//     //         arr[index] = !arr[index]
+//     //         return arr
+//     //     })
+//     //     // setState(prev => ([
+//     //     //     ...prev,
+//     //     //     prev[index] = !prev[index]
+//     //     // ]))
+//     // }
+
+
+
+
+//     // const moduleListOld = modules.map((module, index) => (
+//     //     <ListItem key={module} disablePadding>
+//     //         <ListItemButton>
+//     //             <ListItemIcon onClick={() => handleChange(index)}>
+//     //                 {state[index] ? <CheckCircleOutlineIcon color="primary" /> : <CheckCircleIcon color="primary" />}
+//     //             </ListItemIcon>
+//     //             <ListItemText primary={module} />
+//     //         </ListItemButton>
+//     //     </ListItem>
+//     // ))
+
+//     return (
+//         <Box sx={{ display: 'flex', paddingTop: 6 }}>
+//             <Drawer
+//                 sx={{
+//                     width: drawerWidth,
+//                     flexShrink: 0,
+//                     '& .MuiDrawer-paper': {
+//                         width: drawerWidth,
+//                         boxSizing: 'border-box',
+//                     },
+
+//                 }}
+//                 variant="permanent"
+//                 anchor="left"
+//             >
+
+//                 <Toolbar />
+//                 <Divider />
+//                 <Typography variant='h6' p={1} pl={2} sx={{ fontSize: "1rem", fontWeight: "500", color: "#61616", backgroundColor: "" }} >Lessons</Typography>
+//                 <Divider />
+//                 <List>
+//                     {moduleList}
+//                 </List>
+//             </Drawer>
+
+//             <Box component="main" sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3, color: "black", backgroundColor: "#f5f5f5", minHeight: "100vh" }}>
+//                 {selected && (
+//                     <Box backgroundColor="#ffff">
+//                         <Divider />
+//                         <Typography variant='h3' color="primary" p={1} pl={4}>{selected.header}</Typography>
+//                         <Divider />
+//                         <Box p={1} pl={4} pr={4}>
+//                             <Box   sx={{fontFamily: "Roboto"}} dangerouslySetInnerHTML={{ __html: selected.content }} />
+//                         </Box>
+//                         <Box pb={3} pl={4}>
+//                             <Button sx={{ marginRight: "15px" }} onClick={handlePrevious} disabled={contentIndex === 0}>Previous</Button>
+//                             <Button onClick={handleNext} disabled={contentIndex === module.content.length - 1}>Next</Button>
+//                         </Box>
+//                     </Box>
+//                 )}
+
+//             </Box>
+
+//         </Box>
+//     )
+// }
+
+// export default ModulePage

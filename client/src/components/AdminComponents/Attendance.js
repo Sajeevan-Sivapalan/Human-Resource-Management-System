@@ -12,6 +12,7 @@ class Attendance extends Component {
         this.state = {
             attendanceData: []
         }
+        document.title = 'Attendance';
     }
 
     componentDidMount() {
@@ -66,7 +67,7 @@ class Attendance extends Component {
                     </div>
                 </div>
                 <div>
-                    <div class="attendance-list">
+                    <div class="leave-list">
                         <div class="row justify-content-center">
                             <table class="table table-striped table-hover">
                                 <thead>

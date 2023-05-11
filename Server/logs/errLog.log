@@ -1,0 +1,64 @@
+20230411	13:55:45	08183d8f-bf94-47cc-8560-2613b6085ec7	SyntaxError: Unexpected token } in JSON at position 66	GET	/auth	undefined
+20230411	17:08:50	e47818e5-788f-4402-bc1c-3a4967c59a78	MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://docs.atlas.mongodb.com/security-whitelist/	POST	/auth	http://localhost:3000
+20230412	09:40:07	b9b64124-40ea-4b57-9d35-1c58b3effff4	CastError: Cast to Number failed for value "NaN" (type number) at path "epf"	PUT	/api/payrolls/643509a3f7580ebf5e85e591	undefined
+20230412	09:40:25	a60650d5-ae09-4494-aeaf-c99ee8f9ff89	CastError: Cast to Number failed for value "NaN" (type number) at path "epf"	PUT	/api/payrolls/643509a3f7580ebf5e85e591	undefined
+20230412	09:40:54	13e54cf7-a64a-498e-ab0b-4c03b9a307bf	CastError: Cast to Number failed for value "NaN" (type number) at path "epf"	PUT	/api/payrolls/64350722f7580ebf5e81b5e0	undefined
+20230412	09:42:05	ec7f1f79-3f24-4189-8ea6-b55137d371bf	CastError: Cast to Number failed for value "NaN" (type number) at path "epf"	PUT	/api/payrolls/64350722f7580ebf5e81b5e0	undefined
+20230412	09:42:21	678e2e49-461f-4cfd-8661-6de16920633a	CastError: Cast to Number failed for value "NaN" (type number) at path "epf"	PUT	/api/payrolls/64350722f7580ebf5e81b5e0	undefined
+20230412	09:42:38	4a0c70ff-5dc3-4b95-aa6b-d0cd6995d893	CastError: Cast to Number failed for value "NaN" (type number) at path "epf"	PUT	/api/payrolls/64350722f7580ebf5e81b5e0	undefined
+20230412	09:43:23	80763b66-e7ac-4ee5-8a0d-09d8d847c831	SyntaxError: Unexpected token , in JSON at position 431	PUT	/api/payrolls/64350722f7580ebf5e81b5e0	undefined
+20230412	09:44:42	1b7e3786-0116-440c-9a40-df4225a2a69b	Error: Please add a text field	POST	/api/payrolls/	undefined
+20230412	09:45:09	62ed7336-af0b-497c-a1f7-9a7fcc2bbd36	Error: Please add a text field	POST	/api/payrolls/	undefined
+20230412	09:45:58	f7f48f99-b292-43c4-ba35-627f78435af2	Error: Please add a text field	POST	/api/payrolls/	undefined
+20230412	09:46:24	15f625ca-58ba-4e13-ae40-89c218e254fa	Error: Please add a text field	POST	/api/payrolls/	undefined
+20230412	09:46:38	983c9f98-1e30-456b-ab22-2c027893ba64	MongoServerError: E11000 duplicate key error collection: HRM.payrolls index: Name_1 dup key: { Name: "Nimal" }	POST	/api/payrolls/	undefined
+20230412	13:08:49	8821678b-0f18-4ca9-9f92-bb344d4092d4	CastError: Cast to Number failed for value "NaN" (type number) at path "epf"	PUT	/api/payrolls/64350722f7580ebf5e81b5e0	http://localhost:3000
+20230412	13:08:55	b9055669-008c-4b91-bb64-e5473df5219c	CastError: Cast to Number failed for value "NaN" (type number) at path "epf"	PUT	/api/payrolls/64350722f7580ebf5e81b5e0	http://localhost:3000
+20230412	13:08:55	0bf4bb4e-64ff-4704-bf33-65e9801c8f8f	CastError: Cast to Number failed for value "NaN" (type number) at path "epf"	PUT	/api/payrolls/64350722f7580ebf5e81b5e0	http://localhost:3000
+20230412	13:08:56	e0ca101d-b46f-4e0c-b228-c03aafc30cf7	CastError: Cast to Number failed for value "NaN" (type number) at path "epf"	PUT	/api/payrolls/64350722f7580ebf5e81b5e0	http://localhost:3000
+20230412	13:08:58	78776306-016b-4d15-801a-1a63733bfda0	CastError: Cast to Number failed for value "NaN" (type number) at path "epf"	PUT	/api/payrolls/64350722f7580ebf5e81b5e0	http://localhost:3000
+20230412	14:07:39	13badfa0-e06a-40e7-a1e5-b1d96eac52a5	MongoServerError: E11000 duplicate key error collection: HRM.payrolls index: Name_1 dup key: { Name: "Sampath" }	POST	/api/payrolls/	http://localhost:3000
+20230412	14:09:19	4d3e29dd-9ea9-4b4a-8c4b-7e2d02a59881	MongoServerError: E11000 duplicate key error collection: HRM.payrolls index: Name_1 dup key: { Name: "Sampath" }	POST	/api/payrolls/	http://localhost:3000
+20230412	14:39:47	9e00f014-596b-404d-b21f-6490ec181115	Error: data and salt arguments required	POST	/users	undefined
+20230412	14:40:17	3f6975bc-31b4-4250-a208-8406fe01b562	MongoServerError: E11000 duplicate key error collection: HRM.users index: email_1 dup key: { email: "mzmzaqwan@gmail.com" }	POST	/users	undefined
+20230412	15:37:38	f0277aa5-585f-4b64-822e-9d977f320ae4	SyntaxError: Unexpected token } in JSON at position 93	GET	/api/resources/getResource	undefined
+20230415	11:47:50	9c8331bd-842e-477c-bebd-baceecba14c4	MongoServerError: E11000 duplicate key error collection: HRM.users index: email_1 dup key: { email: "Helllo@hi.com" }	POST	/users	http://localhost:3000
+20230415	11:47:56	dae320a0-9c50-4439-a88b-0233abc7c189	MongoServerError: E11000 duplicate key error collection: HRM.users index: email_1 dup key: { email: "Helllo@hi.com" }	POST	/users	http://localhost:3000
+20230415	11:47:56	da473b7c-c130-4fa7-a872-6e5f13046303	MongoServerError: E11000 duplicate key error collection: HRM.users index: email_1 dup key: { email: "Helllo@hi.com" }	POST	/users	http://localhost:3000
+20230415	11:58:36	77707072-0869-4a2f-91a0-0c7703a4956a	MongoServerError: E11000 duplicate key error collection: HRM.users index: email_1 dup key: { email: "Helllo@hi.com" }	POST	/users	http://localhost:3000
+20230415	14:41:39	b70da507-aa6b-432a-9547-20692c99c37f	Error: Please add a text field	POST	/api/payrolls/	http://localhost:3000
+20230415	14:47:06	ce7f68b0-8d60-48a2-a849-713550bd91dd	Error: Please add a text field	POST	/api/payrolls/	http://localhost:3000
+20230415	14:48:43	c1b19ed5-85e7-4329-aef3-b6cbd8ba89e7	MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://docs.atlas.mongodb.com/security-whitelist/	GET	/api/payrolls/	http://localhost:3000
+20230413	12:02:16	33fec6ca-47ed-43ed-b837-3499a3f0a4b6	Too Many Requests: Too many login attempts from this IP, please try again after a 60 second pause	POST	/	http://localhost:3000
+20230415	10:08:51	5fad11c6-60e6-4764-b83c-3c7f9b0d252c	TypeError: Cannot read properties of undefined (reading 'join')	POST	/run-python-script	undefined
+20230415	11:11:43	56232c02-7435-41a1-b5d8-f640ddbff8dc	Error: Command failed: python script.py "https://firebasestorage.googleapis.com/v0/b/hrms-itp-sliit-y2s2-2023-feb.appspot.com/o/resumes%2FPS%20Answers.pdf49c8e60c-d66e-4dc5-b4b8-fc479874483e?alt=media&token=bb67bd2e-3344-45cb-9c3d-711e88f6408d" "byoutou"
+Traceback (most recent call last):
+  File "C:\Users\DELL\Desktop\Final project\HR system - Sajeevan\server\script.py", line 26, in <module>
+    nlp = spacy.load('en_core_web_sm')
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\spacy\__init__.py", line 54, in load
+    return util.load_model(
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python310\lib\site-packages\spacy\util.py", line 449, in load_model
+    raise IOError(Errors.E050.format(name=name))
+OSError: [E050] Can't find model 'en_core_web_sm'. It doesn't seem to be a Python package or a valid path to a data directory.
+	POST	/run-python-script	http://localhost:3000
+20230415	21:02:04	e39e7b21-5809-4b23-a2be-f21d9add5ecb	Error: Command failed: python script.py "https://firebasestorage.googleapis.com/v0/b/hrms-itp-sliit-y2s2-2023-feb.appspot.com/o/resumes%2FReport%20page.pdfac9df0d6-62c6-4c55-84ad-835f9bb17ef2?alt=media&token=e47d6844-c0ad-444c-8eb3-452adc3880f5" ""
+Traceback (most recent call last):
+  File "D:\Github\repositories\y2_s2_wd_it_01-itp_wd_metro_01\server\script.py", line 156, in <module>
+    with open(r'C:\\Users\\DELL\\Desktop\\Final project\\HR system - Sajeevan\\Server\\tokenizer.pickle', 'rb') as handle:
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\\\Users\\\\DELL\\\\Desktop\\\\Final project\\\\HR system - Sajeevan\\\\Server\\\\tokenizer.pickle'
+	POST	/run-python-script	http://localhost:3000
+20230416	06:20:12	76df0908-2a74-4e14-aca2-c9147593026b	Error: Command failed: python script.py "https://firebasestorage.googleapis.com/v0/b/hrms-itp-sliit-y2s2-2023-feb.appspot.com/o/resumes%2FReport%20page.pdf44c916c2-43dc-4863-be4a-b3540db53676?alt=media&token=30eebc3d-a8c1-4239-bc66-9e4f9f148b7e" ""
+Traceback (most recent call last):
+  File "D:\New folder (4)\server\script.py", line 2, in <module>
+    import pandas as pd
+ModuleNotFoundError: No module named 'pandas'
+	POST	/run-python-script	http://localhost:3000
+20230418	13:22:05	1448195a-423f-4f10-9565-60477d1fdeda	ReferenceError: Cannot access 'FinalSalary' before initialization	PUT	/api/payrolls/updatefromUser/U0001	http://localhost:3000
+20230418	13:22:29	ba201f98-5604-4f32-b3d8-6ec71faaea31	ReferenceError: Cannot access 'FinalSalary' before initialization	PUT	/api/payrolls/updatefromUser/U0001	http://localhost:3000
+20230418	17:39:43	40add4d8-b269-4f60-956e-7ae0efd3b81b	MongoServerError: E11000 duplicate key error collection: HRM.payrolls index: eid_1 dup key: { eid: "U0001" }	POST	/api/payrolls/	http://localhost:3000
+20230418	17:39:55	9f0c09b6-8d0a-44be-a7bb-61eb80f6ce30	MongoServerError: E11000 duplicate key error collection: HRM.payrolls index: eid_1 dup key: { eid: "U0002" }	POST	/api/payrolls/	http://localhost:3000
+20230419	16:50:15	4352bcfc-9852-47ed-918a-129095335269	MongoServerError: E11000 duplicate key error collection: HRM.payrolls index: eid_1 dup key: { eid: "U0001" }	POST	/api/payrolls/	http://localhost:3000
+20230419	16:50:21	e64b1daf-2ee6-4b26-9a72-1f96b16d2004	MongoServerError: E11000 duplicate key error collection: HRM.payrolls index: eid_1 dup key: { eid: "U0001" }	POST	/api/payrolls/	http://localhost:3000
+20230419	16:51:34	0d905a27-0ae6-4025-bdfc-62a3c1c95511	MongoServerError: Plan executor error during findAndModify :: caused by :: E11000 duplicate key error collection: HRM.payrolls index: Name_1 dup key: { Name: "personal updated" }	PUT	/api/payrolls/updatefromUser/U0008	http://localhost:3000
+20230419	16:54:09	ea08ff92-712e-4a15-ae0d-f76f69d7ced0	Error: Payroll not found	PUT	/api/payrolls/updatefromUser/test2	http://localhost:3000
+20230419	19:34:07	655ae3f5-09e7-40e5-8693-ca7a340ec82d	MongoServerError: E11000 duplicate key error collection: HRM.payrolls index: eid_1 dup key: { eid: "U0001" }	POST	/api/payrolls/	http://localhost:3000

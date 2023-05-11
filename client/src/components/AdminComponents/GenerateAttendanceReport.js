@@ -59,7 +59,7 @@ class GenerateAttendanceReport extends Component {
                 Generate Report For Employee
             </button>
             <div class="modal fade" id="AttendanceReport" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="ReqLeaveFormLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="staticBackdropLabel">Generate Report For Employee</h5>

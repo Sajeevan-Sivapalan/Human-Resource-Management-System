@@ -5,7 +5,7 @@ class EmployeeLeaveList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            reason: ''
+            reason: this.props.obj.reason
         }
     }
 
@@ -20,7 +20,7 @@ class EmployeeLeaveList extends Component {
         if(result == true) {
             // delete employee leave record
             axios.delete(`http://localhost:5000/EmployeeReqLeave/deleteEmpLeave/${id}`).then(() => {
-                window.location.replace("http://localhost:3000/emp/EmployeeReqLeave");
+                window.location.replace("http://localhost:3000/dash/emp/EmployeeReqLeave");
             })
         }
     }
@@ -33,7 +33,7 @@ class EmployeeLeaveList extends Component {
         
          // update employee leave record
         axios.put(`http://localhost:5000/AdminReqLeave/updateEmpLeave/${id}`, leaveObj).then(() => {
-            window.location.replace("http://localhost:3000/emp/EmployeeReqLeave");
+            window.location.replace("http://localhost:3000/dash/emp/EmployeeReqLeave");
         })
         .catch((err) => {
             console.log(err);
@@ -49,7 +49,7 @@ class EmployeeLeaveList extends Component {
                         <h5 class="card-header">Request Leave</h5>
                         <div class="card-body">
                             <h6 class="card-title">Employee ID : {this.props.obj.empID}</h6>
-                            <h6 class="card-title">First Name : {this.props.obj.fName}</h6>
+                            <h6 class="card-title">User Name : {this.props.obj.username}</h6>
                             <h6 class="card-title">Leave Type : {this.props.obj.leaveType}</h6>
                             <div class="row">
                                 <h6 class="card-text col-3">Reason : </h6>
